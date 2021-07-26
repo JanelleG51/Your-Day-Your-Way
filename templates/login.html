@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Log In</h3>
+
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
+        <div class="card-panel">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="passwordConfirm" type="password">
+                    <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match"
+                        data-success="Password Match">Confirm Password </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="col s12 btn">
+                    Log In <i class=""></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
