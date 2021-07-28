@@ -26,20 +26,24 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="{{ url_for('landing_page') }}" class="brand-logo center">Your Day Your Way</a>
-                <a href="#" data-target="mobile-sidenav" class="sidenav-trigger right show-on-medium-and-up"><i class="fas fa-bars"></i></a>
+                <a href="#" data-target="mobile-sidenav" class="sidenav-trigger right show-on-medium-and-up"><i
+                        class="fas fa-bars"></i></a>
                 <ul class="sidenav" id="mobile-sidenav">
+                    {% if session.user %}
                     <li><a href="#">My Planner</a></li>
                     <li><a href="#">Browse Workouts</a></li>
                     <li><a href="#">Browse Meals</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% else %}
                     <li><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
 
-        
+
     </header>
 
     <section>
