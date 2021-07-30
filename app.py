@@ -24,6 +24,11 @@ def landing_page():
     return render_template("landing.html")
 
 
+@app.route("/meals")
+def meals():
+    return render_template("meals.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":

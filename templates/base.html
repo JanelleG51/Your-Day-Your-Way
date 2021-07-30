@@ -32,7 +32,7 @@
                     {% if session.user %}
                     <li><a href="#">My Planner</a></li>
                     <li><a href="#">Browse Workouts</a></li>
-                    <li><a href="#">Browse Meals</a></li>
+                    <li><a href="{{ url_for('meals') }}">Browse Meals</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
