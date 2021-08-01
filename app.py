@@ -26,7 +26,25 @@ def landing_page():
 
 @app.route("/meals")
 def meals():
-    return render_template("meals.html")
+    meals = list(mongo.db.meals.find())
+    return render_template("meals.html", meals=meals)
+
+
+@app.route("/add_meal", methods=["GET", "POST"])
+def add_meal():
+    if request.method == "POST":
+        meal = {
+            "meal_category": request.form.get("meal_category"),
+            "recipe_name": request.form.get("recipe_name")
+        }
+        
+        mongo.db.meals.insert_one(meal)
+        flash("Meal Sucessfully Added!")
+        return redirect(url_for("meals", username=session["user"]))
+    
+    meal_categories = mongo.db.meal_catgories.find().sort("name", 1)
+    
+    return render_template("add_meal.html", meal_categories=meal_categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
