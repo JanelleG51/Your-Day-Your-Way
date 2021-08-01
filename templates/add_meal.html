@@ -8,6 +8,18 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
+                <select id="meal_category" name="meal_category" class="validate" required>
+                  <option value="" disabled selected>Choose Category</option>
+                  {% for category in meal_categories %}
+                  <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
+                  {% endfor %}
+                </select>
+                <label>Meal Category</label>
+              </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
                 <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" 
                     type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name</label>
