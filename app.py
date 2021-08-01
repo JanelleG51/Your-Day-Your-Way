@@ -30,14 +30,6 @@ def meals():
     return render_template("meals.html", meals=meals)
 
 
-@app.route("/add_meal", methods=["GET", "POST"])
-def add_meal():
-
-    meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
-
-    return render_template("add_meal.html", meal_categories=meal_categories)
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -98,6 +90,28 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/add_meal", methods=["GET", "POST"])
+def add_meal():
+    if request.method == "POST":
+        meal = {
+            "meal_category": request.form.get("meal_category"),
+            "recipe_name": request.form.get("recipe_name"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "servings": request.form.get("servings"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "created_by": session["user"]
+        }
+
+        mongo.db.tasks.insert_one(meal)
+        flash("Meal Sucessfully Added")
+        return redirect(url_for("meals"))
+
+    meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
+    return render_template("add_meal.html", meal_categories=meal_categories)
 
 
 if __name__ == "__main__":

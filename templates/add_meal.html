@@ -4,24 +4,24 @@
 <h3 class=" center-align">Add Meal</h3>
 
 <div class="row card-panel">
-    <form class="col s12" method="POST" action="">
+    <form class="col s12" method="POST" action="{{ url_for('add_meal') }}">
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
                 <select id="meal_category" name="meal_category" class="validate" required>
-                  <option value="" disabled selected>Choose Category</option>
-                  {% for category in meal_categories %}
-                  <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
-                  {% endfor %}
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in meal_categories %}
+                    <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
+                    {% endfor %}
                 </select>
                 <label>Meal Category</label>
-              </div>
+            </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" 
-                    type="text" class="validate" required>
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
+                    required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
@@ -58,6 +58,13 @@
                 <i class=""></i>
                 <input id="method" name="method" type="text" class="validate">
                 <label for="method">Method</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit">
+                    Add Meal
+                </button>
             </div>
         </div>
     </form>
