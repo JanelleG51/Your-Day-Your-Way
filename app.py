@@ -97,7 +97,9 @@ def add_meal():
     if request.method == "POST":
         meal = {
             "meal_category": request.form.get("meal_category"),
+            "image_url": request.form.get("image_url"),
             "recipe_name": request.form.get("recipe_name"),
+            "recipe_url": request.form.get("recipe_url"),
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
             "servings": request.form.get("servings"),
@@ -106,7 +108,7 @@ def add_meal():
             "created_by": session["user"]
         }
 
-        mongo.db.tasks.insert_one(meal)
+        mongo.db.meals.insert_one(meal)
         flash("Meal Sucessfully Added")
         return redirect(url_for("meals"))
 
