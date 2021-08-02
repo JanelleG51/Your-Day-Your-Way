@@ -42,7 +42,9 @@ body {
     padding: 1rem;
   }
 
-
+.full-recipe-image {
+  max-height: 575px;
+}
 
 
 
