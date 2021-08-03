@@ -137,7 +137,8 @@ def edit_meal(meal_id):
 
     meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
     meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
-    return render_template("edit_meal.html", meal=meal, meal_categories=meal_categories)
+    return render_template(
+        "edit_meal.html", meal=meal, meal_categories=meal_categories)
 
 
 @app.route("/full_recipe/<meal_id>")

@@ -55,28 +55,28 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="ingredients" name="ingredients" type="text" class="validate">
+                <input id="ingredients" name="ingredients" type="text" class="validate" value="{{ meal.ingredients }}">
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="method" name="method" type="text" class="validate" required>
+                <input id="method" name="method" type="text" class="validate" value="{{ meal.method }}">
                 <label for="method">Method</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="image_url" name="image_url"  type="url" class="validate" required>
+                <input id="image_url" name="image_url"  type="url" class="validate" value="{{ meal.image_url }}">
                 <label for="image_url">Meal Image Link</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="recipe_url" name="recipe_url"  type="url" class="validate" required>
+                <input id="recipe_url" name="recipe_url"  type="url" class="validate" value="{{ meal.recipe_url }}">
                 <label for="recipe_url">Recipe Link</label>
             </div>
         </div>
