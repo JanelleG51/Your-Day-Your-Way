@@ -8,8 +8,10 @@
     </div>
     <div class="row">
         <div class="col s3">
+            {% if session.user|lower == meal.created_by|lower %}
             <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small">Edit</a>
             <a href="" class="btn-small">Delete</a>
+            {% endif %}
         </div>
     </div>
     <div class="row">
