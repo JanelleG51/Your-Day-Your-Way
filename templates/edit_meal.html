@@ -5,7 +5,7 @@
 <section class="container">
     
 <div class="row card-panel">
-    <form class="col s12" method="POST" action="{{ url_for('edit_meal', meal_id=meal.id) }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_meal', meal_id=meal._id) }}">
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
@@ -26,8 +26,7 @@
             <div class="input-field col s12">
                 <i class=""></i>
                 <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" 
-                value="{{ meal.recipe_name }}" type="text" class="validate"
-                    required>
+                value="{{ meal.recipe_name }}" type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
@@ -35,14 +34,14 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ meal.prep_time }}">
+                <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ meal.prep_time }}" required>
                 <label for="prep_time">Prep Time</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="cook_time" name="cook_time" type="text" class="validate" value="{{ meal.cook_time }}">
+                <input id="cook_time" name="cook_time" type="text" class="validate" value="{{ meal.cook_time }}" required>
                 <label for="cook_time">Cook Time</label>
             </div>
         </div>
@@ -63,29 +62,27 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="method" name="method" type="text" class="validate">
+                <input id="method" name="method" type="text" class="validate" required>
                 <label for="method">Method</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="image_url" name="image_url"  type="url" class="validate"
-                    required>
+                <input id="image_url" name="image_url"  type="url" class="validate" required>
                 <label for="image_url">Meal Image Link</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="recipe_url" name="recipe_url"  type="url" class="validate"
-                    required>
+                <input id="recipe_url" name="recipe_url"  type="url" class="validate" required>
                 <label for="recipe_url">Recipe Link</label>
             </div>
         </div>
         <div class="row">
             <div class="col s12 center-align">
-                <button class="btn" type="submit">
+                <button type="submit" class="btn">
                     Edit Meal
                 </button>
                 <a href="{{ url_for('meals') }}" class="btn">Cancel</a>
