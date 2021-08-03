@@ -104,7 +104,7 @@ def add_meal():
             "cook_time": request.form.get("cook_time"),
             "servings": request.form.get("servings"),
             "ingredients": request.form.get("ingredients"),
-            "method": request.form.get("method"),
+            "method": request.form.getlist("method"),
             "created_by": session["user"]
         }
 
