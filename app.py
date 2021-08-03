@@ -139,6 +139,13 @@ def edit_meal(meal_id):
     meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
     return render_template(
         "edit_meal.html", meal=meal, meal_categories=meal_categories)
+    
+    
+@app.route("/delete_task/<meal_id>")
+def delete_meal(meal_id):
+    mongo.db.meals.remove({"_id": ObjectId(meal_id)})
+    flash("Meal Sucessfully Deleted")
+    return redirect(url_for("meals"))
 
 
 @app.route("/full_recipe/<meal_id>")
