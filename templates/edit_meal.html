@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class=" center-align">Add Meal</h3>
+<h3 class=" center-align">Edit Meal</h3>
 <section class="container">
     
 <div class="row card-panel">
-    <form class="col s12" method="POST" action="{{ url_for('add_meal') }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_meal', meal_id=meal.id) }}">
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
@@ -15,7 +15,7 @@
                     <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
                     {% endfor %}
                 </select>
-                <label>Meal Category</label>
+                <label>Meal Category</label> 
             </div>
         </div>
         <div class="row">
@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col s12 center-align">
                 <button type="submit">
-                    Add Meal
+                    Edit Meal
                 </button>
             </div>
         </div>
