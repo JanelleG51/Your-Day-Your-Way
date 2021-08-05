@@ -34,7 +34,7 @@
                     {% if session.user %}
                     <li></i><a href="#"><i class="fas fa-calendar-week"></i>My Planner</a></li>
                     <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a></li>
-                    <li><a href=""><i class="fas fa-plus"></i>Add Workout</a></li>
+                    <li><a href="{{ url_for('add_workout') }}"><i class="fas fa-plus"></i>Add Workout</a></li>
                     <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a></li>
                     <li><a href="{{ url_for('add_meal') }}"><i class="fas fa-plus"></i>Add Meal</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="far fa-user"></i>My Profile</a></li>

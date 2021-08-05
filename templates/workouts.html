@@ -11,7 +11,7 @@
 <div class="row">
     {% for workout in workouts %}
     <div class="col s12 m6 xl4">
-        <div class="card medium center-align">
+        <div class="card medium center-align ">
             <div class="card-image">
                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
                     <img src="{{ workout.wo_image_url }}">
@@ -24,10 +24,7 @@
                         {{ workout.workout_level }}</span></p>
             </div>
             <div class="card-action">
-                {% if session.user|lower == workout.created_by|lower %}
-                <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
-                <a href="{{ url_for('delete_workout', workout_id=workout._id) }}" class="btn-small">Delete</a>
-                {% endif %}
+                
             </div>
         </div>
     </div>

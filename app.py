@@ -122,6 +122,36 @@ def add_meal():
     return render_template("add_meal.html", meal_categories=meal_categories)
 
 
+@app.route("/add_workout", methods=["GET", "POST"])
+def add_workout():
+    if request.method == "POST":
+        workout = {
+            "workout_category": request.form.get("workout_category"),
+            "wo_image_url": request.form.get("wo_image_url"),
+            "workout_title": request.form.get("workout_title"),
+            "workout_url": request.form.get("workout_url"),
+            "workout_level": request.form.get("workout_level"),
+            "workout_location": request.form.get("workout_location"),
+            "workout_duration": request.form.get("workout_duration"),
+            "sets": request.form.get("sets"),
+            "workout_steps": request.form.getlist("workout_steps"),
+            "created_by": session["user"]
+        }
+
+        mongo.db.workouts.insert_one(workout)
+        flash("Workout Sucessfully Added")
+        return redirect(url_for("workouts"))
+
+    workout_categories = mongo.db.workout_categories.find().sort(
+        "workout_category", 1)
+    workout_levels = mongo.db.workout_levels.find().sort("workout_level", 1)
+    workout_locations = mongo.db.workout_locations.find().sort(
+        "workout_location", 1)
+    return render_template(
+        "add_workout.html", workout_categories=workout_categories,
+        workout_levels=workout_levels, workout_locations=workout_locations)
+
+
 @app.route("/edit_meal/<meal_id>", methods=["GET", "POST"])
 def edit_meal(meal_id):
     if request.method == "POST":
@@ -145,8 +175,8 @@ def edit_meal(meal_id):
     meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
     return render_template(
         "edit_meal.html", meal=meal, meal_categories=meal_categories)
-    
-    
+
+
 @app.route("/delete_meal/<meal_id>")
 def delete_meal(meal_id):
     mongo.db.meals.remove({"_id": ObjectId(meal_id)})
@@ -162,7 +192,7 @@ def full_recipe(meal_id):
 
 @app.route("/full_workout/<workout_id>")
 def full_workout(workout_id):
-    workout = mongo.db.meals.find_one({"_id": ObjectId(workout_id)})
+    workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
     return render_template("full_workout.html", workout=workout)
 
 
