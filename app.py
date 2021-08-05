@@ -30,6 +30,12 @@ def meals():
     return render_template("meals.html", meals=meals)
 
 
+@app.route("/workouts")
+def workouts():
+    workouts = list(mongo.db.workouts.find())
+    return render_template("workouts.html", workouts=workouts)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -141,7 +147,7 @@ def edit_meal(meal_id):
         "edit_meal.html", meal=meal, meal_categories=meal_categories)
     
     
-@app.route("/delete_task/<meal_id>")
+@app.route("/delete_meal/<meal_id>")
 def delete_meal(meal_id):
     mongo.db.meals.remove({"_id": ObjectId(meal_id)})
     flash("Meal Sucessfully Deleted")
@@ -152,6 +158,12 @@ def delete_meal(meal_id):
 def full_recipe(meal_id):
     meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
     return render_template("full_recipe.html", meal=meal)
+
+
+@app.route("/full_workout/<workout_id>")
+def full_workout(workout_id):
+    workout = mongo.db.meals.find_one({"_id": ObjectId(workout_id)})
+    return render_template("full_workout.html", workout=workout)
 
 
 if __name__ == "__main__":
