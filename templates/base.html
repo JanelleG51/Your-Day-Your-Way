@@ -30,7 +30,9 @@
                 <a href="#" data-target="mobile-sidenav" class="sidenav-trigger right show-on-medium-and-up"><i
                         class="fas fa-bars"></i></a>
                 <ul class="sidenav" id="mobile-sidenav">
+                    <div class="row">
                     <li><a class="sidenav-close right" href="#!"><i class="fas fa-times"></i></a></li>
+                    </div>
                     {% if session.user %}
                     <li></i><a href="#"><i class="fas fa-calendar-week"></i>My Planner</a></li>
                     <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a></li>
