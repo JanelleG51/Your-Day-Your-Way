@@ -177,11 +177,50 @@ def edit_meal(meal_id):
         "edit_meal.html", meal=meal, meal_categories=meal_categories)
 
 
+@app.route("/edit_workout/<workout_id>", methods=["GET", "POST"])
+def edit_workout(workout_id):
+    if request.method == "POST":
+        submit_wo = {
+            "workout_category": request.form.get("workout_category"),
+            "wo_image_url": request.form.get("wo_image_url"),
+            "workout_title": request.form.get("workout_title"),
+            "workout_url": request.form.get("workout_url"),
+            "workout_level": request.form.get("workout_level"),
+            "workout_location": request.form.get("workout_location"),
+            "workout_duration": request.form.get("workout_duration"),
+            "sets": request.form.get("sets"),
+            "workout_steps": request.form.getlist("workout_steps"),
+            "created_by": session["user"]
+        }
+
+        mongo.db.workouts.update({"_id": ObjectId(workout_id)}, submit_wo)
+        flash("Workout Sucessfully Updated")
+        return redirect(url_for("workouts"))
+    
+    workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
+    workout_categories = mongo.db.workout_categories.find().sort(
+        "workout_category", 1)
+    workout_levels = mongo.db.workout_levels.find().sort("workout_level", 1)
+    workout_locations = mongo.db.workout_locations.find().sort(
+        "workout_location", 1)
+    return render_template(
+        "edit_workout.html", workout=workout,
+        workout_categories=workout_categories,
+        workout_levels=workout_levels, workout_locations=workout_locations)
+
+
 @app.route("/delete_meal/<meal_id>")
 def delete_meal(meal_id):
     mongo.db.meals.remove({"_id": ObjectId(meal_id)})
     flash("Meal Sucessfully Deleted")
     return redirect(url_for("meals"))
+
+
+@app.route("/delete_workout/<workout_id>")
+def delete_workout(workout_id):
+    mongo.db.workouts.remove({"_id": ObjectId(workout_id)})
+    flash("Workout Sucessfully Deleted")
+    return redirect(url_for("workouts"))
 
 
 @app.route("/full_recipe/<meal_id>")
