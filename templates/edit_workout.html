@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class=" center-align">Edit Workout</h3>
+<section class="container">
+    
+<div class="row card-panel">
+    <form class="col s12" method="POST" action="{{ url_for('edit_workout', workout_id=workout._id) }}">
+        <div class="row">
+            <div class="input-field col 4">
+                <i class=""></i>
+                <select id="workout_category" name="workout_category" class="validate" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in workout_categories %}
+                        {% if category.workout_category == workout.workout_category %}
+                            <option value="{{ category.workout_category }}" selected>{{ category.workout_category }}</option>
+                        {% else %}
+                            <option value="{{ category.workout_category }}">{{ category.workout_category }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Category</label>
+            </div>
+            <div class="input-field col 4">
+                <i class=""></i>
+                <select id="workout_level" name="workout_level" class="validate" required>
+                    <option value="" disabled selected>Choose Level</option>
+                    {% for category in workout_levels %}
+                        {% if category.workout_level == workout.workout_level %}
+                            <option value="{{ category.workout_level }}" selected>{{ category.workout_level }}</option>
+                        {% else %}
+                            <option value="{{ category.workout_level }}">{{ category.workout_level }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Level</label>
+            </div>
+            <div class="input-field col 4">
+                <i class=""></i>
+                <select id="workout_location" name="workout_location" class="validate" required>
+                    <option value="" disabled selected>Choose Location</option>
+                    {% for category in workout_locations %}
+                        {% if category.workout_location == workout.workout_location %}
+                            <option value="{{ category.workout_location }}" selected>{{ category.workout_location }}</option>
+                        {% else %}
+                            <option value="{{ category.workout_location }}">{{ category.workout_location }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Location</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="workout_title" name="workout_title" value="{{ workout.workout_title }}" minlength="5" maxlength="50" type="text" class="validate"
+                    required>
+                <label for="workout_title">Workout Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="wo_image_url" name="wo_image_url" value="{{ workout.wo_image_url }}" type="url" class="validate">
+                <label for="wo_image_url">Workout Image</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="workout_url" name="workout_url" value="{{ workout.workout_url }}" type="url" class="validate">
+                <label for="workout_url">Workout Link</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="workout_duration" name="workout_duration" value="{{ workout.workout_duration }}" type="text" class="validate">
+                <label for="workout_duration">Duration</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="sets" name="sets" value="{{ workout.sets }}" type="text" class="validate">
+                <label for="sets">Number of sets</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class=""></i>
+                <input id="workout_steps" name="workout_steps" value="{{ workout.workout_steps }}" type="text" class="validate">
+                <label for="workout_steps">Steps</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn">
+                    Edit Workout
+                </button>
+                <a href="{{ url_for('workouts') }}" class="btn">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+</section>
+
+{% endblock %}
