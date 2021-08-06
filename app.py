@@ -196,7 +196,7 @@ def edit_workout(workout_id):
         mongo.db.workouts.update({"_id": ObjectId(workout_id)}, submit_wo)
         flash("Workout Sucessfully Updated")
         return redirect(url_for("workouts"))
-    
+
     workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
     workout_categories = mongo.db.workout_categories.find().sort(
         "workout_category", 1)
