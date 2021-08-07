@@ -45,8 +45,8 @@ def workouts():
 
 @app.route("/planner")
 def planner():
-    meals = list(mongo.db.meals.find())
-    workouts = list(mongo.db.workouts.find())
+    meals = mongo.db.meals.find().sort("_id", -1).limit(3)
+    workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
     return render_template("planner.html", meals=meals, workouts=workouts)
 
 

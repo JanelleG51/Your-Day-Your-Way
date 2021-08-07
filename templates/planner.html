@@ -6,7 +6,7 @@
 
 <div class="row">
     {% for workout in workouts %}
-    <div class="col s12 m6 xl4">
+    <div class="col s12 m6 offset-m3">
         <div class="card medium center-align">
             <div class="card-image">
                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
@@ -39,7 +39,7 @@
 <div class="row">
 
     {% for meal in meals %}
-    <div class="col s12 m6 xl4">
+    <div class="col s12 m6 offset-m3">
         <div class="card medium center-align">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
@@ -63,5 +63,7 @@
     </div>
     {% endfor %}
 </div>
+
+
 
 {% endblock %}
