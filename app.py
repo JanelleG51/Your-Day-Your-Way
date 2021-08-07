@@ -13,7 +13,9 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
+
+cloudinary_url = ('https://res.cloudinary.com/your-day-your-way/image/upload/user_images')
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -39,6 +41,13 @@ def meals():
 def workouts():
     workouts = list(mongo.db.workouts.find())
     return render_template("workouts.html", workouts=workouts)
+
+
+@app.route("/planner")
+def planner():
+    meals = list(mongo.db.meals.find())
+    workouts = list(mongo.db.workouts.find())
+    return render_template("planner.html", meals=meals, workouts=workouts)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -72,8 +81,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"]))
+                flash("Welcome back, {}".format(request.form.get("username")))
+                return redirect(url_for("planner", username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
