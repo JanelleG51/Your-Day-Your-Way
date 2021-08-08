@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 import cloudinary
 import cloudinary.uploader
@@ -24,44 +25,24 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# Login Required Decorator
+# Credit: https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/#login-required-decorator
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if "user" not in session:
+            flash("Please login to access this content")
+            return redirect(url_for("login"))
+        return f(*args, **kwargs)
+    return decorated_function
+
 
 @app.route("/")
 @app.route("/landing")
 def landing_page():
     return render_template("landing.html")
-
-
-@app.route("/meals")
-def meals():
-    meals = list(mongo.db.meals.find())
-    return render_template("meals.html", meals=meals)
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search_meals():
-    query = request.form.get("query")
-    meals = list(mongo.db.meals.find({"$text": {"$search": query}}))
-    return render_template("meals.html", meals=meals)
-
-
-@app.route("/workouts")
-def workouts():
-    workouts = list(mongo.db.workouts.find())
-    return render_template("workouts.html", workouts=workouts)
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search_workouts():
-    query = request.form.get("query")
-    workouts = list(mongo.db.workouts.find({"$text": {"$search": query}}))
-    return render_template("workouts.html", workouts=workouts)
-
-
-@app.route("/planner")
-def planner():
-    meals = mongo.db.meals.find().sort("_id", -1).limit(3)
-    workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
-    return render_template("planner.html", meals=meals, workouts=workouts)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -103,12 +84,49 @@ def login():
 
         else:
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login.html"))
+            return redirect(url_for("login"))
 
     return render_template("login.html")
 
 
+@app.route("/planner")
+@login_required
+def planner():
+    meals = mongo.db.meals.find().sort("_id", -1).limit(3)
+    workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
+    return render_template("planner.html", meals=meals, workouts=workouts)
+
+
+@app.route("/meals")
+@login_required
+def meals():
+    meals = list(mongo.db.meals.find())
+    return render_template("meals.html", meals=meals)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search_meals():
+    query = request.form.get("query")
+    meals = list(mongo.db.meals.find({"$text": {"$search": query}}))
+    return render_template("meals.html", meals=meals)
+
+
+@app.route("/workouts")
+@login_required
+def workouts():
+    workouts = list(mongo.db.workouts.find())
+    return render_template("workouts.html", workouts=workouts)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search_workouts():
+    query = request.form.get("query")
+    workouts = list(mongo.db.workouts.find({"$text": {"$search": query}}))
+    return render_template("workouts.html", workouts=workouts)
+
+
 @app.route("/logout")
+@login_required
 def logout():
     flash("You have been logged out")
     session.pop("user")
@@ -116,6 +134,7 @@ def logout():
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
+@login_required
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -127,6 +146,7 @@ def profile(username):
 
 
 @app.route("/add_meal", methods=["GET", "POST"])
+@login_required
 def add_meal():
     if request.method == "POST":
         meal = {
@@ -151,6 +171,7 @@ def add_meal():
 
 
 @app.route("/add_workout", methods=["GET", "POST"])
+@login_required
 def add_workout():
     if request.method == "POST":
         workout = {
@@ -181,6 +202,7 @@ def add_workout():
 
 
 @app.route("/edit_meal/<meal_id>", methods=["GET", "POST"])
+@login_required
 def edit_meal(meal_id):
     if request.method == "POST":
         submit = {
@@ -206,6 +228,7 @@ def edit_meal(meal_id):
 
 
 @app.route("/edit_workout/<workout_id>", methods=["GET", "POST"])
+@login_required
 def edit_workout(workout_id):
     if request.method == "POST":
         submit_wo = {
@@ -238,6 +261,7 @@ def edit_workout(workout_id):
 
 
 @app.route("/delete_meal/<meal_id>")
+@login_required
 def delete_meal(meal_id):
     mongo.db.meals.remove({"_id": ObjectId(meal_id)})
     flash("Meal Sucessfully Deleted")
@@ -245,6 +269,7 @@ def delete_meal(meal_id):
 
 
 @app.route("/delete_workout/<workout_id>")
+@login_required
 def delete_workout(workout_id):
     mongo.db.workouts.remove({"_id": ObjectId(workout_id)})
     flash("Workout Sucessfully Deleted")
