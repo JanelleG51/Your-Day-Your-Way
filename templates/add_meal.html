@@ -3,89 +3,112 @@
 
 <h3 class=" center-align">Add Meal</h3>
 <section class="container">
-    
-<div class="row card-panel">
-    <form class="col s12" method="POST" action="{{ url_for('add_meal') }}">
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <select id="meal_category" name="meal_category" class="validate" required>
-                    <option value="" disabled selected>Choose Category</option>
-                    {% for category in meal_categories %}
-                    <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
-                    {% endfor %}
-                </select>
-                <label>Meal Category</label>
+
+    <div class="row card-panel">
+        <form class="col s12" method="POST" action="{{ url_for('add_meal') }}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <select id="meal_category" name="meal_category" class="validate" required>
+                        <option value="" disabled selected>Choose Category</option>
+                        {% for category in meal_categories %}
+                        <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Meal Category</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
-                    required>
-                <label for="recipe_name">Recipe Name</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
+                        required>
+                    <label for="recipe_name">Recipe Name</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="image_url" name="image_url"  type="url" class="validate"
-                    required>
-                <label for="image_url">Meal Image Link</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="image_url" name="image_url" type="url" class="validate" required>
+                    <label for="image_url">Meal Image Link</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="recipe_url" name="recipe_url"  type="url" class="validate"
-                    required>
-                <label for="recipe_url">Recipe Link</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="recipe_url" name="recipe_url" type="url" class="validate" required>
+                    <label for="recipe_url">Recipe Link</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="prep_time" name="prep_time" type="text" class="validate">
-                <label for="prep_time">Prep Time</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="prep_time" name="prep_time" type="text" class="validate">
+                    <label for="prep_time">Prep Time</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="cook_time" name="cook_time" type="text" class="validate">
-                <label for="cook_time">Cook Time</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="cook_time" name="cook_time" type="text" class="validate">
+                    <label for="cook_time">Cook Time</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="servings" name="servings" type="text" class="validate">
-                <label for="servings">Servings</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="servings" name="servings" type="text" class="validate">
+                    <label for="servings">Servings</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="ingredients" name="ingredients" type="text" class="validate">
-                <label for="ingredients">Ingredients</label>
+            <!-- credit to https://github.com/Brianconn71/ms3-recipedia/blob/master/templates/add_recipe.html -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="ingredients" name="ingredients" type="text" minlength="2" maxlength="50" class="validate">
+                    <label for="ingredients">Ingredient 1:</label>
+                    <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="method" name="method" type="text" class="validate">
-                <label for="method">Method</label>
+            <div class="row ingredient_list">
+                    
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12 center-align">
-                <button class="btn" type="submit">
-                    Add Meal
-                </button>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="method" name="method" type="text" minlength="3" maxlength="500" class="validate">
+                    <label for="method">Step 1:</label>
+                    <a class="btn-small add_step">Add Step<i class=""></i></a>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+
+            <div class="step_list">
+                
+            </div>
+            <!-- end credit -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button class="btn" type="submit">
+                        Add Meal
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('meals') }}" class="btn">
+                        Cancel</a>
+                
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/add_recipe.js') }}"></script>
 
 {% endblock %}
