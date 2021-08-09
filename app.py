@@ -16,7 +16,8 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
-cloudinary_url = ('https://res.cloudinary.com/your-day-your-way/image/upload/user_images')
+cloudinary_url = (
+    'https://res.cloudinary.com/your-day-your-way/image/upload/user_images')
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -149,6 +150,14 @@ def profile(username):
 @login_required
 def add_meal():
     if request.method == "POST":
+        ingredients = request.form.getlist("ingredients")
+        method = request.form.getlist("method")
+        ingredients_list = []
+        method_list = []
+        for ingredient in ingredients:
+            ingredients_list.append(ingredient)
+        for step in method:
+            method_list.append(step)
         meal = {
             "meal_category": request.form.get("meal_category"),
             "image_url": request.form.get("image_url"),
@@ -157,8 +166,8 @@ def add_meal():
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
             "servings": request.form.get("servings"),
-            "ingredients": request.form.get("ingredients"),
-            "method": request.form.getlist("method"),
+            "ingredients": ingredients_list,
+            "method": method_list,
             "created_by": session["user"]
         }
 
