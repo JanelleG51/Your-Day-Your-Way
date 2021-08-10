@@ -154,7 +154,7 @@ def add_meal():
         ingredients_list = []
         for ingredient in ingredients:
             ingredients_list.append(ingredient)
-        method = request.form.getlist("method")      
+        method = request.form.getlist("method")
         method_list = []
         for step in method:
             method_list.append(step)
@@ -184,9 +184,9 @@ def add_meal():
 def add_workout():
     if request.method == "POST":
         workout_steps = request.form.getlist("workout_steps")
-        workout_step = []
+        workout_list = []
         for step in workout_steps:
-            workout_step.append(step)
+            workout_list.append(step)
         workout = {
             "workout_category": request.form.get("workout_category"),
             "wo_image_url": request.form.get("wo_image_url"),
@@ -196,7 +196,7 @@ def add_workout():
             "workout_location": request.form.get("workout_location"),
             "workout_duration": request.form.get("workout_duration"),
             "sets": request.form.get("sets"),
-            "workout_steps": workout_step,
+            "workout_steps": workout_list,
             "created_by": session["user"]
         }
 
