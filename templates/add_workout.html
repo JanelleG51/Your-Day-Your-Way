@@ -77,15 +77,26 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
-                <input id="workout_steps" name="workout_steps" type="text" class="validate">
-                <label for="workout_steps">Steps</label>
+                <input id="workout_steps" name="workout_steps" type="text" minlength="2" maxlength="50" class="validate">
+                <label for="workout_steps">Step 1:</label>
+                <a class="btn-small add_step">Add Step<i class=""></i></a>
             </div>
+        </div>
+        <div class="workout_step"> 
+                
         </div>
         <div class="row">
             <div class="col s12 center-align">
                 <button class="btn" type="submit">
                     Add Workout
                 </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('workouts') }}" class="btn">
+                    Cancel</a>
+            
             </div>
         </div>
     </form>

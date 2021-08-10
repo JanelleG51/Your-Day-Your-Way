@@ -151,11 +151,11 @@ def profile(username):
 def add_meal():
     if request.method == "POST":
         ingredients = request.form.getlist("ingredients")
-        method = request.form.getlist("method")
         ingredients_list = []
-        method_list = []
         for ingredient in ingredients:
             ingredients_list.append(ingredient)
+        method = request.form.getlist("method")      
+        method_list = []
         for step in method:
             method_list.append(step)
         meal = {
@@ -183,6 +183,10 @@ def add_meal():
 @login_required
 def add_workout():
     if request.method == "POST":
+        workout_steps = request.form.getlist("workout_steps")
+        workout_step = []
+        for step in workout_steps:
+            workout_step.append(step)
         workout = {
             "workout_category": request.form.get("workout_category"),
             "wo_image_url": request.form.get("wo_image_url"),
@@ -192,7 +196,7 @@ def add_workout():
             "workout_location": request.form.get("workout_location"),
             "workout_duration": request.form.get("workout_duration"),
             "sets": request.form.get("sets"),
-            "workout_steps": request.form.getlist("workout_steps"),
+            "workout_steps": workout_step,
             "created_by": session["user"]
         }
 
