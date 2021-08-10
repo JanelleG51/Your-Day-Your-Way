@@ -17,6 +17,11 @@ body {
     font-family: 'Syncopate', sans-serif;
   }
 
+  .landing-page-btn{
+    padding: 0.5rem;
+
+  }
+
 #background-video {
     object-fit: cover;
     width: 100vw;

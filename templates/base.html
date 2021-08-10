@@ -37,7 +37,7 @@
                     <li></i><a href="{{ url_for('planner') }}"><i class="fas fa-calendar-week"></i>My Planner</a></li>
                     <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a></li>
                     <li><a href="{{ url_for('add_workout') }}"><i class="fas fa-plus"></i>Add Workout</a></li>
-                    
+                    <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a></li> 
                     <li><a href="{{ url_for('add_meal') }}"><i class="fas fa-plus"></i>Add Meal</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>My Profile</a></li>
                     <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
@@ -74,6 +74,7 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/add_content.js') }}"></script>
     {% block scripts %}
     {% endblock %}
 </body>
