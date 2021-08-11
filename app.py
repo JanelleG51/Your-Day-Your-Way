@@ -218,6 +218,14 @@ def add_workout():
 @login_required
 def edit_meal(meal_id):
     if request.method == "POST":
+        ingredients = request.form.getlist("ingredients")
+        ingredients_list = []
+        for ingredient in ingredients:
+            ingredients_list.append(ingredient)
+        method = request.form.getlist("method")
+        method_list = []
+        for step in method:
+            method_list.append(step)
         submit = {
             "meal_category": request.form.get("meal_category"),
             "image_url": request.form.get("image_url"),
@@ -226,8 +234,8 @@ def edit_meal(meal_id):
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
             "servings": request.form.get("servings"),
-            "ingredients": request.form.get("ingredients"),
-            "method": request.form.getlist("method"),
+            "ingredients": ingredients_list,
+            "method": method_list,
             "created_by": session["user"]
         }
 

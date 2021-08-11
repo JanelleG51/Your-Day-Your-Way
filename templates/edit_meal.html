@@ -21,7 +21,7 @@
                 </select>
                 <label>Meal Category</label> 
             </div>
-        </div>
+        </div> 
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
@@ -52,20 +52,46 @@
                 <label for="servings">Servings</label>
             </div>
         </div>
+        
+        {% for ingredient in meal.ingredients %}
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="ingredients{{loop.index}}" name="ingredients" type="text" minlength="2" maxlength="50" value="{{ ingredient }}" class="validate" >
+                    <label for="ingredients{{loop.index}}">Ingredient {{loop.index}}:</label>
+                    <a class="btn-small remove_ingredient">Remove<i class=""></i></a>
+                </div>
+            </div>
+        {% endfor %}
         <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="ingredients" name="ingredients" type="text" class="validate" value="{{ meal.ingredients }}">
-                <label for="ingredients">Ingredients</label>
+            <div class="col s12">
+                <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
             </div>
         </div>
+        <div class="row ingredient_list">
+                
+        </div> 
+        
+        {% for step in meal.method %}
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="method{{loop.index}}" name="method" type="text" value="{{ step }}" minlength="3" maxlength="500" class="validate">
+                    <label for="method{loop.index}}">Step {{ loop.index }}:</label>
+                    <a class="btn-small remove_step">Remove<i class=""></i></a>
+                </div>
+            </div>
+        {% endfor %}
+
         <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="method" name="method" type="text" class="validate" value="{{ meal.method }}">
-                <label for="method">Method</label>
+            <div class="col s12">
+                <a class="btn-small add_step">Add Step<i class=""></i></a>
             </div>
         </div>
+
+        <div class="method_list">
+            
+        </div> 
         <div class="row">
             <div class="input-field col s12">
                 <i class=""></i>
