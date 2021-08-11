@@ -252,6 +252,10 @@ def edit_meal(meal_id):
 @login_required
 def edit_workout(workout_id):
     if request.method == "POST":
+        workout_steps = request.form.getlist("workout_steps")
+        workout_list = []
+        for step in workout_steps:
+            workout_list.append(step)
         submit_wo = {
             "workout_category": request.form.get("workout_category"),
             "wo_image_url": request.form.get("wo_image_url"),
@@ -261,7 +265,7 @@ def edit_workout(workout_id):
             "workout_location": request.form.get("workout_location"),
             "workout_duration": request.form.get("workout_duration"),
             "sets": request.form.get("sets"),
-            "workout_steps": request.form.getlist("workout_steps"),
+            "workout_steps": workout_list,
             "created_by": session["user"]
         }
 

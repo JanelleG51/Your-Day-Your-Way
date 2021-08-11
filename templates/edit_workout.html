@@ -86,11 +86,22 @@
                 <label for="sets">Number of sets</label>
             </div>
         </div>
+        {% for step in workout.workout_steps %}
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="workout_steps{{loop.index}}" name="workout_steps" value="{{ step }}" type="text" class="validate">
+                    <label for="workout_steps{{loop.index}}">Steps {{ loop.index }}:</label>
+                    <a class="btn-small remove_step">Remove<i class=""></i></a>
+                </div> 
+            </div>
+        {% endfor %}
+        <div class="workout_list"> 
+                
+        </div>
         <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="workout_steps" name="workout_steps" value="{{ workout.workout_steps }}" type="text" class="validate">
-                <label for="workout_steps">Steps</label>
+            <div class="col s12">
+                <a class="btn-small add_step">Add Step<i class=""></i></a>
             </div>
         </div>
         <div class="row">
