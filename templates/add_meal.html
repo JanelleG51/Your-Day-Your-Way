@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 file-field">
-                    <div class="btn small">
+                    <div class="btn-small">
                         <span>Select Image</span>
                         <input id="image_url" name="image_url" type="file" accept="image/*" required>
                     </div>
@@ -37,75 +37,76 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="recipe_url" name="recipe_url" type="url" class="validate" required>
-            <label for="recipe_url">Recipe Link</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="prep_time" name="prep_time" type="text" class="validate">
-            <label for="prep_time">Prep Time</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="cook_time" name="cook_time" type="text" class="validate">
-            <label for="cook_time">Cook Time</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="servings" name="servings" type="text" class="validate">
-            <label for="servings">Servings</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="ingredients" name="ingredients" type="text" minlength="2" maxlength="50" class="validate">
-            <label for="ingredients">Ingredient 1:</label>
-            <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
-        </div>
-    </div>
-    <div class="row ingredient_list">
 
-    </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="recipe_url" name="recipe_url" type="url" class="validate" required>
+                    <label for="recipe_url">Recipe Link</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="prep_time" name="prep_time" type="text" class="validate">
+                    <label for="prep_time">Prep Time</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="cook_time" name="cook_time" type="text" class="validate">
+                    <label for="cook_time">Cook Time</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="servings" name="servings" type="text" class="validate">
+                    <label for="servings">Servings</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="ingredients" name="ingredients" type="text" minlength="2" maxlength="75"
+                        class="validate">
+                    <label for="ingredients">Ingredient 1:</label>
+                    <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
+                </div>
+            </div>
+            <div class="row ingredient_list">
 
-    <div class="row">
-        <div class="input-field col s12">
-            <i class=""></i>
-            <input id="method" name="method" type="text" minlength="3" maxlength="500" class="validate">
-            <label for="method">Step 1:</label>
-            <a class="btn-small add_step">Add Step<i class=""></i></a>
-        </div>
-    </div>
+            </div>
 
-    <div class="method_list">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="method" name="method" type="text" minlength="3" maxlength="500" class="validate">
+                    <label for="method">Step 1:</label>
+                    <a class="btn-small add_step">Add Step<i class=""></i></a>
+                </div>
+            </div>
 
-    </div>
+            <div class="method_list">
 
-    <div class="row">
-        <div class="col s12 center-align">
-            <button class="btn" type="submit">
-                Add Meal
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('meals') }}" class="btn">
-                Cancel</a>
+            </div>
 
-        </div>
-    </div>
-    </form>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button class="btn" type="submit">
+                        Add Meal
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('meals') }}" class="btn">
+                        Cancel</a>
+
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 

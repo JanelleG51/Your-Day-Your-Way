@@ -157,8 +157,7 @@ def profile(username):
 @login_required
 def add_meal():
     if request.method == "POST":
-        image = request.files['image_url']
-        image_upload = cloudinary.uploader.upload(image)
+        
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
         for ingredient in ingredients:
@@ -167,6 +166,8 @@ def add_meal():
         method_list = []
         for step in method:
             method_list.append(step)
+        image = request.files['image_url']
+        image_upload = cloudinary.uploader.upload(image)
         meal = {
             "meal_category": request.form.get("meal_category"),
             "image_url": image_upload['secure_url'],
