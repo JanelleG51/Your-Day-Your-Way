@@ -10,7 +10,14 @@ body {
     padding: 0;
     font-family: 'Open Sans', Arial, sans-serif;
     overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     
+  }
+
+  main {
+    flex: 1 0 auto;
   }
 
   h1, h3, .brand-logo {
@@ -87,6 +94,4 @@ p > span{
   letter-spacing: .20vw;
  
 }
-
-
 
