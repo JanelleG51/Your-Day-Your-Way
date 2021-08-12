@@ -18,8 +18,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class=""></i>
-                    <input id="email" name="email" type="email"
-                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
             </div>
@@ -33,6 +32,7 @@
                 </div>
             </div>
 
+
             <div class="row">
                 <button type="submit" class="col s12 btn">
                     Register <i class=""></i>
@@ -40,6 +40,15 @@
             </div>
         </div>
     </form>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Already Registered?
+            <a href="{{ url_for('login') }}" class="">Log In</a>
+        </p>
+    </div>
 </div>
 
 
