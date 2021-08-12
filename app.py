@@ -156,8 +156,7 @@ def profile(username):
 @app.route("/add_meal", methods=["GET", "POST"])
 @login_required
 def add_meal():
-    if request.method == "POST":
-        
+    if request.method == "POST":     
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
         for ingredient in ingredients:
@@ -197,9 +196,11 @@ def add_workout():
         workout_list = []
         for step in workout_steps:
             workout_list.append(step)
+        image = request.files['wo_image_url']
+        image_upload = cloudinary.uploader.upload(image)
         workout = {
             "workout_category": request.form.get("workout_category"),
-            "wo_image_url": request.form.get("wo_image_url"),
+            "wo_image_url": image_upload['secure_url'],
             "workout_title": request.form.get("workout_title"),
             "workout_url": request.form.get("workout_url"),
             "workout_level": request.form.get("workout_level"),
@@ -249,7 +250,7 @@ def edit_meal(meal_id):
             "created_by": session["user"]
         }
 
-        mongo.db.meals.update({"_id": ObjectId(meal_id)}, submit)
+        mongo.db.meals.update_one({"_id": ObjectId(meal_id)}, submit)
         flash("Meal Sucessfully Updated")
 
     meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
@@ -279,7 +280,7 @@ def edit_workout(workout_id):
             "created_by": session["user"]
         }
 
-        mongo.db.workouts.update({"_id": ObjectId(workout_id)}, submit_wo)
+        mongo.db.workouts.update_one({"_id": ObjectId(workout_id)}, submit_wo)
         flash("Workout Sucessfully Updated")
         return redirect(url_for("workouts"))
 
