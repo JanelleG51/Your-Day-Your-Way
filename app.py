@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
+from py_edamam import PyEdamam
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -14,10 +15,7 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
-cloudinary_url = (
-    'https://res.cloudinary.com/your-day-your-way/image/upload/user_images')
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -26,8 +24,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# Login Required Decorator
-# Credit: https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/#login-required-decorator
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUD_NAME"),
+    api_key=os.environ.get("API_KEY"),
+    api_secret=os.environ.get("API_SECRET")
+)
+
+# Login Required Decorator Credit:
+# https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/login-required-decorator
 
 
 def login_required(f):
@@ -58,8 +63,10 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "email": request.form.get("email").lower(),
         }
+
         mongo.db.users.insert_one(register)
 
         session["user"] = request.form.get("username").lower()
@@ -150,6 +157,8 @@ def profile(username):
 @login_required
 def add_meal():
     if request.method == "POST":
+        image = request.files['image_url']
+        image_upload = cloudinary.uploader.upload(image)
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
         for ingredient in ingredients:
@@ -160,7 +169,7 @@ def add_meal():
             method_list.append(step)
         meal = {
             "meal_category": request.form.get("meal_category"),
-            "image_url": request.form.get("image_url"),
+            "image_url": image_upload['secure_url'],
             "recipe_name": request.form.get("recipe_name"),
             "recipe_url": request.form.get("recipe_url"),
             "prep_time": request.form.get("prep_time"),
