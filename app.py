@@ -1,12 +1,11 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for)s
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
-from py_edamam import PyEdamam
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -156,7 +155,7 @@ def profile(username):
 @app.route("/add_meal", methods=["GET", "POST"])
 @login_required
 def add_meal():
-    if request.method == "POST":     
+    if request.method == "POST":
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
         for ingredient in ingredients:
