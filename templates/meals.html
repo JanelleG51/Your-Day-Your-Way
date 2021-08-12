@@ -31,7 +31,7 @@
 <div class="row">
     {% for meal in meals %}
     <div class="col s12 m6 xl4">
-        <div class="card medium center-align">
+        <div class="card medium hoverable center-align">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                     <img src="{{ meal.image_url }}">

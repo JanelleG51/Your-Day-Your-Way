@@ -6,6 +6,7 @@ html, body {
   
 body {
     color: rgba(55,71,79);
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', Arial, sans-serif;
@@ -13,7 +14,7 @@ body {
     
   }
 
-  h1, h3, .brand-logo {
+  h1, h3 {
     font-family: 'Syncopate', sans-serif;
   }
 

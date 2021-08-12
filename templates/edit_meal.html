@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class=""></i>
-                    <input id="ingredients{{loop.index}}" name="ingredients" type="text" minlength="2" maxlength="50" value="{{ ingredient }}" class="validate" >
+                    <input id="ingredients{{loop.index}}" name="ingredients" type="text" minlength="2" maxlength="250" value="{{ ingredient }}" class="validate" >
                     <label for="ingredients{{loop.index}}">Ingredient {{loop.index}}:</label>
                     <a class="btn-small remove_ingredient">Remove<i class=""></i></a>
                 </div>
@@ -96,7 +96,7 @@
             <div class="input-field col s12">
                 <i class=""></i>
                 <input id="image_url" name="image_url"  type="url" class="validate" value="{{ meal.image_url }}">
-                <label for="image_url">Meal Image Link</label>
+                <label for="image_url">Image</label>
             </div>
         </div>
         <div class="row">

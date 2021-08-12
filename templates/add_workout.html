@@ -5,7 +5,7 @@
 <section class="container">
     
 <div class="row card-panel">
-    <form class="col s12" method="POST" action="{{ url_for('add_workout') }}">
+    <form class="col s12" method="POST" action="{{ url_for('add_workout') }}" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col 3">
                 <i class=""></i>
@@ -47,10 +47,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-                <i class=""></i>
-                <input id="wo_image_url" name="wo_image_url"  type="url" class="validate">
-                <label for="wo_image_url">Workout Image</label>
+            <div class="input-field col s12 file-field">
+                <div class="btn-small">
+                    <span>Select Image</span>
+                    <input id="wo_image_url" name="wo_image_url" type="file" accept="image/*" required>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
             </div>
         </div>
         <div class="row">
