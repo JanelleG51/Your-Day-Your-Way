@@ -14,12 +14,57 @@
     </div>
 </div>
 
+<div class="row profile-image-row">
+    <div class="col s12 m4">
+        <div class="card medium">
+            <div class="card-image">
+                <img class="activator"
+                    src="https://i.dlpng.com/static/png/6191702-user-png-image-royalty-free-stock-png-images-for-your-design-user-png-512_512_preview.png">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator">Card Title<i class="fas fa-ellipsis-v right"></i></i></span>
+                <p><a href="#">This is a link</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title">Card Title<i class="material-icons right">close</i></span>
+            </div>
+        </div>
+    </div>
 
-<h4>Profile Image</h4>
-<form action="" method="post" enctype="multipart/form-data">
-  <p><input type="file" name="file">
-     <input type="submit" value="Upload">
-</form>
+
+    <form class="col s12 m8">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+    </form>
+
+</div>
+
 
 
 {% endblock %}
