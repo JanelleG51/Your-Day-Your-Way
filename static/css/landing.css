@@ -5,22 +5,21 @@ html, body {
   }
   
 body {
-    color: rgba(55,71,79);
+    color: white;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Syncopate', Arial, sans-serif;
     overflow-x: hidden;
     
   }
 
-  h1, h3 {
-    font-family: 'Syncopate', sans-serif;
-  }
+h2{
+  font-size: 2.5rem;
+}
 
-  .landing-page-btn{
-    padding: 0.5rem;
-
+.row .col{
+    padding: 0;
   }
 
 #background-video {
@@ -43,18 +42,46 @@ body {
   }
   
   .main-heading {
-    
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 3vw;
-    line-height: 1.2;
-    font-size: 3vw;
+    font-size: 4vw;
+    font-weight: 500; 
+    letter-spacing: 2vw;
+    line-height: 2.5vh;
     text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1.5px 1.5px rgb(0, 18, 25)
+  }
+
+
+  .landing-page-btn{
+    background-color: rgba(0, 18, 25, 0.7);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+
   }
   
-  .landing-page-container {
-    background: rgba(black, 0.66);
-    color: white;
+  .description-container {
+    background-color: rgba(0, 18, 25, 0.5);
     position: relative;
     padding: 1rem;
   }
+
+  .descriptor-box-img{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  
+
+
+/*--media query for screens 768px and above--*/
+
+  @media(min-width: 768px){
+  .main-heading{
+    font-size: 2.5vw;
+    letter-spacing: 3vw;
+    line-height: 1.2vh;
+    }
+  }
+    

@@ -51,3 +51,9 @@ p > span{
  
 }
 
+/* buttons */
+.btn-small{
+  background-color: #28666E;
+  font-size: .75rem;
+  margin: 5px;
+}

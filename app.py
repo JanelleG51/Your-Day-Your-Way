@@ -96,13 +96,12 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/planner")
+@app.route("/planner") 
 @login_required
 def planner():
     meals = mongo.db.meals.find().sort("_id", -1).limit(3)
     workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
     return render_template("planner.html", meals=meals, workouts=workouts)
-
 
 @app.route("/meals")
 @login_required

@@ -19,10 +19,6 @@
                 <p><span>Time: {{ workout.workout_duration|upper }} min</span><span>Where: {{ workout.workout_location }} </span><span>Level:
                         {{ workout.workout_level }}</span></p>
             </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-              </div>
             <div class="card-action">
                 {% if session.user|lower == workout.created_by|lower %}
                 <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
