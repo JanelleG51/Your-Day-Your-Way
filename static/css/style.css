@@ -17,7 +17,7 @@ body {
     flex: 1 0 auto;
   }
 
-  h1, h3, .brand-logo {
+h1, h3, .brand-logo {
     font-family: 'Syncopate', sans-serif;
   }
 
@@ -52,8 +52,21 @@ p > span{
 }
 
 /* buttons */
-.btn-small{
+.btn-small {
   background-color: #28666E;
   font-size: .75rem;
   margin: 5px;
+}
+
+
+/* modal */
+.modal-header {
+  font-family: 'Syncopate';
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.delete-btn {
+  background-color: rgb(155, 34, 38);
+
 }

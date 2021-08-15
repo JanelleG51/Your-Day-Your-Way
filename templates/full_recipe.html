@@ -11,7 +11,7 @@
         <div class="col s3">
             {% if session.user|lower == meal.created_by|lower %}
             <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small">Edit</a>
-            <a href="{{ url_for('delete_meal', meal_id=meal._id) }}" class="btn-small">Delete</a>
+            <a href="#modal1" class="btn-small modal-trigger">Delete</a>
             {% endif %}
         </div>
     </div>
@@ -51,6 +51,20 @@
 
 </section> 
 
+<div id="modal1" class="modal">
+    <div class="modal-content modal-header">
+        <h4 class="center-align">Please confirm your choice</h4>
+        <p class="center-align">Are you sure you want to delete <span>{{ meal.recipe_name }}?</span>
+        </p>
+        <p class="center-align">Once deleted you will not be able to get it back.</p>
+        
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close btn">Cancel</a>
+        <a href="{{ url_for('delete_meal', meal_id=meal._id) }}"
+            class="btn delete-btn">Delete</a>
+    </div>
+</div>
 
 
 {% endblock %}
