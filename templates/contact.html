@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Contact Us</h3>
+
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('contact') }}">
+        <div class="card-panel">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class=""></i>
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="message-field" name="message-field" class="materialize-textarea validate"
+                        minlength="20" required></textarea>
+                    <label for="message-field">Message</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="col s12 btn-small">
+                    Send <i class=""></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock%}

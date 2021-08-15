@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from flask_mail import Mail, Message
 from bson.objectid import ObjectId
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -29,6 +30,18 @@ cloudinary.config(
     api_key=os.environ.get("API_KEY"),
     api_secret=os.environ.get("API_SECRET")
 )
+
+
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
+app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
+
+mail = Mail(app)
+site_email = "ydywplanner@gmail.com"
+
 
 # Login Required Decorator Credit:
 # https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/login-required-decorator
@@ -321,6 +334,30 @@ def full_recipe(meal_id):
 def full_workout(workout_id):
     workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
     return render_template("full_workout.html", workout=workout)
+
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        email = request.form.get("email")
+        message_field = request.form.get("message-field")
+        msg = Message('We have your message!',
+                      html=('<p> Thank you for reaching out to us '
+                            'with your message: </p>'
+                            '<br>'
+                            '<p> %s </p>'
+                            '<br>'
+                            '<p>We will get back to you as soon as we can.</p>'
+                            '<br>'
+                            '<p>We hope you are enjoying your day!</p>'
+                            % message_field),
+                      sender=site_email,
+                      cc=[email],
+                      recipients=[site_email])
+        mail.send(msg)
+
+        flash("Thank you for contacting us. Your message is on its way!")
+    return render_template("contact.html")
 
 
 if __name__ == "__main__":

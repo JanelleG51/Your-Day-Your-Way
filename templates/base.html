@@ -45,6 +45,7 @@
                     <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a></li>                   
                     <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Log In</a></li>
                     <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i>Register</a></li>
+                    <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i></i>Contact Us</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -80,7 +81,7 @@
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text footer-heading">Useful Links</h5>
               <ul class="social-links">
-                <li><a class="grey-text text-lighten-3" href="#!"><i
+                <li><a class="grey-text text-lighten-3" href="{{ url_for('contact') }}"><i
                   class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
               </ul>
               <h5 class="white-text footer-heading">Our Socials</h5>
