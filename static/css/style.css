@@ -17,7 +17,7 @@ body {
     flex: 1 0 auto;
   }
 
-h1, h3, .brand-logo {
+h1, h3, h5, .brand-logo {
     font-family: 'Syncopate', sans-serif;
   }
 
@@ -69,4 +69,31 @@ p > span{
 .delete-btn {
   background-color: rgb(155, 34, 38);
 
+}
+
+/* footer */
+
+.page-footer {
+  background-color: rgb(10, 147, 150);
+
+}
+
+.footer-heading {
+  font-size: 1rem;
+}
+
+.copyright-text {
+  font-size: .80rem;
+}
+
+.social-links li a i {
+  font-size: 1.5rem;
+  margin: .35rem;
+  transition: 0.2s ease;
+}
+
+.social-links li a i:hover {
+  transform: scale(1.2);
+  color: rgb(0, 18, 25);
+ 
 }
