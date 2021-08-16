@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from datetime import datetime
 from flask_mail import Mail, Message
 from bson.objectid import ObjectId
 from functools import wraps
@@ -112,6 +113,7 @@ def login():
 @app.route("/planner")
 @login_required
 def planner():
+    date = datetime.today().strftime('%A - %D')
     workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
     breakfast = mongo.db.meals.find(
         {"meal_category": "Breakfast"}).sort("_id", -1).limit(1)
@@ -120,8 +122,8 @@ def planner():
     dinner = mongo.db.meals.find(
         {"meal_category": "Dinner"}).sort("_id", -1).limit(1)
     return render_template("planner.html", workouts=workouts,
-                           breakfast=breakfast, lunch=lunch, dinner=dinner)
-
+                           breakfast=breakfast,
+                           lunch=lunch, dinner=dinner, date=date)
 
 
 @app.route("/meals")
