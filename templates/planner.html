@@ -7,7 +7,7 @@
 <div class="row">
     {% for workout in workouts %}
     <div class="col s12 m6 offset-m3"> 
-        <div class="card medium center-align">
+        <div class="card medium center-align hoverable">
             <div class="card-image">
                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
                     <img src="{{ workout.wo_image_url }}">
@@ -35,7 +35,7 @@
 
     {% for meal in breakfast %}
     <div class="col s12 m6 offset-m3">
-        <div class="card medium center-align">
+        <div class="card medium center-align hoverable">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                     <img src="{{ meal.image_url }}">
@@ -62,7 +62,7 @@
 
     {% for meal in lunch %}
     <div class="col s12 m6 offset-m3">
-        <div class="card medium center-align">
+        <div class="card medium center-align hoverable">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                     <img src="{{ meal.image_url }}">
@@ -89,7 +89,7 @@
 
     {% for meal in dinner %}
     <div class="col s12 m6 offset-m3">
-        <div class="card medium center-align">
+        <div class="card medium center-align hoverable">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                     <img src="{{ meal.image_url }}">
