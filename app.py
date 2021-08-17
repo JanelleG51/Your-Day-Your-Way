@@ -74,10 +74,17 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
+        image = request.files['profile_url']
+        image_upload = cloudinary.uploader.upload(image)
+
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "email": request.form.get("email").lower(),
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "profile_url": image_upload['secure_url'],
+
         }
 
         mongo.db.users.insert_one(register)
@@ -168,9 +175,12 @@ def logout():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    meals = list(mongo.db.meals.find())
+    workouts = list(mongo.db.workouts.find())
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, meals=meals,
+                               workouts=workouts)
 
     return redirect(url_for("login"))
 

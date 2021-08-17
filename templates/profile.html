@@ -16,26 +16,33 @@
 
 <div class="row profile-image-row">
     <div class="col s12 m4">
-        <div class="card medium">
-            <div class="card-image">
-                <img class="activator"
-                    src="https://i.dlpng.com/static/png/6191702-user-png-image-royalty-free-stock-png-images-for-your-design-user-png-512_512_preview.png">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator">Card Title<i class="fas fa-ellipsis-v right"></i></i></span>
-                <p><a href="#">This is a link</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title">Card Title<i class="material-icons right">close</i></span>
+        <div class="card-image"> <img src=""></div>
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ username.profile_url }}">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
             </div>
         </div>
+
+
     </div>
 
 
     <form class="col s12 m8">
         <div class="row">
             <div class="input-field col s6">
-                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <input id="first_name" type="text" class="validate">
                 <label for="first_name">First Name</label>
             </div>
             <div class="input-field col s6">
@@ -61,9 +68,101 @@
                 <label for="password">Password</label>
             </div>
         </div>
+        <div class="row">
+            <div class="input-field col s12 file-field">
+                <div class="btn-small">
+                    <span>Select Image</span>
+                    <input id="profile_url" name="profile_url" type="file" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+        </div>
     </form>
 
 </div>
+
+
+<div class="row">
+    <div class="col s12 center-align">
+        <h5>Your Meals</h5>
+    </div>
+</div>
+
+{% if meals|length > 0 %}
+<div class="row">
+    {% for meal in meals %}
+    {% if meal.created_by == session['user'] %}
+    <div class="col s6 m3">
+        <div class="card small hoverable center-align">
+            <div class="card-image">
+                <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
+                    <img src="{{ meal.image_url }}">
+                    <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
+            </div>
+            <div class="card-content">
+                <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
+                <p><span>Prep: {{ meal.prep_time|upper }} min</span><span>Cook: {{ meal.cook_time|upper }}
+                        min</span><span>Servings:
+                        {{ meal.servings }}</span></p>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+</div>
+{% else %}
+
+<div class="row">
+    <div class="col s12">
+        <h3 class="center-align">No Results Found</h3>
+    </div>
+</div>
+{% endif %}
+
+
+<div class="row">
+    <div class="col s12 center-align">
+        <h5>Your Workouts</h5>
+    </div>
+</div>
+{% if workouts|length > 0 %}
+        <div class="row">
+            {% for workout in workouts %}
+                {% if workout.created_by == session['user'] %}
+                        <div class="col s6 m3">
+                            <div class="card small center-align hoverable">
+                                <div class="card-image">
+                                    <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
+                                        <img src="{{ workout.wo_image_url }}">
+                                        <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+
+                                </div>
+                                <div class="card-content">
+                                    <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
+                                    <p><span>Time: {{ workout.workout_duration|upper }} min</span><span>Where:
+                                            {{ workout.workout_location }} </span><span>Level:
+                                            {{ workout.workout_level }}</span></p>
+                                </div>
+                                <div class="card-action">
+                                    {% if session.user|lower == workout.created_by|lower %}
+                                    <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                         </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+            
+        {% else %}
+            <div>
+                <h3 class="center-align">You haven't added any workouts yet!</h3>
+            </div>
+        </div>
+{% endif %}
 
 
 
