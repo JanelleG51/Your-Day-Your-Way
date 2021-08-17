@@ -4,11 +4,22 @@
 
 <h3>Planner</h3>
 
-<p class="planner-date">Today is: {{ date }}</p>
+<div>
+    <p class="planner-date">Today is: {{ date }}</p>
+</div>
+<div class=row>
+    <div class="col s12 center-align">
+        {% for day in days %}
 
+        <a href=""><span class="planner-days">{{ day }}</span></a>
+
+        {% endfor %}
+    </div>
+</div>
 <div class="row">
+
     {% for workout in workouts %}
-    <div class="col s12 m6 offset-m3"> 
+    <div class="col s12 m6 offset-m3">
         <div class="card medium center-align hoverable">
             <div class="card-image">
                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
@@ -18,7 +29,8 @@
             </div>
             <div class="card-content">
                 <span id="card-font" class="card-title">{{ workout.workout_title|upper }}</span>
-                <p><span>Time: {{ workout.workout_duration|upper }} min</span><span>Where: {{ workout.workout_location }} </span><span>Level:
+                <p><span>Time: {{ workout.workout_duration|upper }} min</span><span>Where:
+                        {{ workout.workout_location }} </span><span>Level:
                         {{ workout.workout_level }}</span></p>
             </div>
             <div class="card-action">
@@ -26,11 +38,18 @@
                 <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
                 {% endif %}
             </div>
-            
+            <div class="switch right-align">
+                <label>
+                  Off
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
         </div>
     </div>
-
     {% endfor %}
+
+  
 </div>
 
 <div class="row">

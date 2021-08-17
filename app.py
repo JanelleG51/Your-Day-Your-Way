@@ -113,6 +113,7 @@ def login():
 @app.route("/planner")
 @login_required
 def planner():
+    days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
     date = datetime.today().strftime('%A - %D')
     workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
     breakfast = mongo.db.meals.find(
@@ -123,7 +124,7 @@ def planner():
         {"meal_category": "Dinner"}).sort("_id", -1).limit(1)
     return render_template("planner.html", workouts=workouts,
                            breakfast=breakfast,
-                           lunch=lunch, dinner=dinner, date=date)
+                           lunch=lunch, dinner=dinner, date=date, days=days)
 
 
 @app.route("/meals")
