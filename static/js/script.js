@@ -34,3 +34,8 @@ $(document).ready(function () {
     }
 });
 
+
+const takeMeBack = () => {
+    window.history.back();
+  };
+

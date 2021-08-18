@@ -149,6 +149,10 @@ transition: 0.2s ease;
 background-color: black;
 }
 
+.back-btn {
+  margin-top: 2rem;
+}
+
 /* footer */
 
 .page-footer {

@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<button class="back-btn" data-action="back" aria-label="go back">
-    <i class="fas fa-angle-left" aria-hidden="true"></i>
-</button>
+<div class="row back-btn">
+    <div class="col s12">
+        <a href="#" onclick="takeMeBack()"><i
+                class="fas fa-arrow-left"></i> Back</a>
+    </div>
+</div>
 
 <section class="container">
     <div class="row center-align">
