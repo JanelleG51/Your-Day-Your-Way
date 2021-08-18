@@ -7,7 +7,7 @@
 <div class="row card-panel">
     <form class="col s12" method="POST" action="{{ url_for('edit_workout', workout_id=workout._id) }}">
         <div class="row">
-            <div class="input-field col 4">
+            <div class="input-field col s4">
                 <i class=""></i>
                 <select id="workout_category" name="workout_category" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
@@ -21,7 +21,7 @@
                 </select>
                 <label>Category</label>
             </div>
-            <div class="input-field col 4">
+            <div class="input-field col s4">
                 <i class=""></i>
                 <select id="workout_level" name="workout_level" class="validate" required>
                     <option value="" disabled selected>Choose Level</option>
@@ -35,7 +35,7 @@
                 </select>
                 <label>Level</label>
             </div>
-            <div class="input-field col 4">
+            <div class="input-field col s4">
                 <i class=""></i>
                 <select id="workout_location" name="workout_location" class="validate" required>
                     <option value="" disabled selected>Choose Location</option>
@@ -92,24 +92,25 @@
                     <i class=""></i>
                     <input id="workout_steps{{loop.index}}" name="workout_steps" value="{{ step }}" type="text" class="validate">
                     <label for="workout_steps{{loop.index}}">Steps {{ loop.index }}:</label>
-                    <a class="btn-small remove_step">Remove<i class=""></i></a>
+                    <a class="btn-small red darken-4 remove_step">Remove<i class=""></i></a>
                 </div> 
             </div>
         {% endfor %}
-        <div class="workout_list"> 
-                
-        </div>
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 right-align">
                 <a class="btn-small add_step">Add Step<i class=""></i></a>
             </div>
         </div>
+        <div class="workout_list"> 
+                
+        </div>
+        
         <div class="row">
             <div class="col s12 center-align">
                 <button type="submit" class="btn-small">
                     Edit Workout
                 </button>
-                <a href="{{ url_for('workouts') }}" class="btn-small">Cancel</a>
+                <a href="{{ url_for('workouts') }}" class="btn-small red darken-4">Cancel</a>
             </div>
         </div>
     </form>

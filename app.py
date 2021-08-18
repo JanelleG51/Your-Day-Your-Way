@@ -285,7 +285,7 @@ def edit_meal(meal_id):
             "created_by": session["user"]
         }
 
-        mongo.db.meals.update_one({"_id": ObjectId(meal_id)}, submit)
+        mongo.db.meals.update({"_id": ObjectId(meal_id)}, submit)
         flash("Meal Sucessfully Updated")
 
     meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
@@ -315,7 +315,7 @@ def edit_workout(workout_id):
             "created_by": session["user"]
         }
 
-        mongo.db.workouts.update_one({"_id": ObjectId(workout_id)}, submit_wo)
+        mongo.db.workouts.update({"_id": ObjectId(workout_id)}, submit_wo)
         flash("Workout Sucessfully Updated")
         return redirect(url_for("workouts"))
 

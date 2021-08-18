@@ -12,7 +12,7 @@ $(".add_ingredient").click(function (e) {
         <i class=""></i>
         <input id="ingredients${ingred}" name="ingredients" minlength="2" maxlength="60" type="text" class="validate" required>
         <label for="ingredients${ingred}">Ingredient ${ingred}:</label>
-        <a type="button" class="btn-small remove_ingredient"><i class=""></i>Remove</a></div>`);
+        <a type="button" class="btn-small red darken-4 remove_ingredient"><i class=""></i>Remove</a></div>`);
     }
 });
 
@@ -28,13 +28,13 @@ $(".add_step").click(function (e) {
         <i class=""></i>
         <input id="method${step}" name="method" minlength="3" maxlength="500" type="text" class="validate" required>
         <label for="method${step}">Step ${step}:</label>
-        <a class="btn-small remove_step"><i class=""></i>Remove</a></div>`);
+        <a class="btn-small red darken-4 remove_step"><i class=""></i>Remove</a></div>`);
         $(".workout_list").append(`
         <div class="input-field col s12">
         <i class=""></i>
         <input id="workout_steps${step}" name="workout_steps" minlength="3" maxlength="500" type="text" class="validate" required>
         <label for="workout_steps${step}">Step ${step}:</label>
-        <a class="btn-small remove_step"><i class=""></i>Remove</a></div>`);
+        <a class="btn-small red darken-4 remove_step"><i class=""></i>Remove</a></div>`);
     }
 });
 
