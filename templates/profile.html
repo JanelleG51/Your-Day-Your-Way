@@ -146,11 +146,7 @@
                                             {{ workout.workout_location }} </span><span>Level:
                                             {{ workout.workout_level }}</span></p>
                                 </div>
-                                <div class="card-action">
-                                    {% if session.user|lower == workout.created_by|lower %}
-                                    <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
-                                    {% endif %}
-                                </div>
+                                
                             </div>
                          </div>
                 {% endif %}

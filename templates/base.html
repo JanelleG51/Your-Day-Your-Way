@@ -28,25 +28,24 @@
       <div class="nav-wrapper">
         <a href="{{ url_for('planner') }}" class="main-title center">Your Day Your Way</a>
         <a href="#" data-target="mobile-sidenav" class="sidenav-trigger right show-on-medium-and-up"><i
-            class="fas fa-bars"></i></a> 
+            class="fas fa-bars"></i></a>
+            
         <ul class="sidenav" id="mobile-sidenav">
-          <div class="row">
-            <li><a class="sidenav-close right" href="#!"><i class="fas fa-times"></i></a></li>
-          </div>
+          <li class="side-nav-title center-align"><a href="{{ url_for('planner') }}">Your Day Your Way</a></li> 
+          <li><a class="sidenav-close right" href="#!"><i class="fas fa-times" aria-label="close"></i></a></li>
           {% if session.user %}
-          <li></i><a href="{{ url_for('planner') }}"><i class="fas fa-calendar-week"></i>My Planner</a></li>
-          <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a></li>
-          <li><a href="{{ url_for('add_workout') }}"><i class="fas fa-plus"></i>Add Workout</a></li>
-          <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a></li>
-          <li><a href="{{ url_for('add_meal') }}"><i class="fas fa-plus"></i>Add Meal</a></li>
-          <li><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-user"></i>My Profile</a>
+          <li></i><a href="{{ url_for('planner') }}" aria-label="my planner"><i class="fas fa-calendar-week"></i>My Planner</a></li>
+          <li><a href="{{ url_for('workouts') }}" aria-label="workouts"><i class="fas fa-dumbbell" ></i>Workouts</a></li>
+          <li><a class="add-nav-link" href="{{ url_for('add_workout') }}" aria-label="add workout"><i class="fas fa-plus"></i>Add Workout</a></li>
+          <li><a href="{{ url_for('meals') }}" aria-label="meals"><i class="fas fa-utensils"></i>Meals</a></li>
+          <li><a class="add-nav-link" href="{{ url_for('add_meal') }}" aria-label="add meal"><i class="fas fa-plus"></i>Add Meal</a></li>
+          <li><a href="{{ url_for('profile', username=session['user']) }}" aria-label="my profile"><i class="fas fa-user"></i>My Profile</a>
           </li>
-          <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
+          <li><a href="{{ url_for('logout') }}" aria-label="log out"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
           {% else %}
-          <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a></li>
-          <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Log In</a></li>
-          <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i>Register</a></li>
-          <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i></i>Contact Us</a></li>
+          <li><a href="{{ url_for('login') }}" aria-label="log in"><i class="fas fa-sign-in-alt"></i>Log In</a></li>
+          <li><a href="{{ url_for('register') }}" aria-label="register"><i class="fas fa-user-plus"></i>Register</a></li>
+          <li><a href="{{ url_for('contact') }}" aria-label="contact us"><i class="fas fa-envelope"></i></i>Contact Us</a></li>
           {% endif %}
         </ul>
       </div>
@@ -76,16 +75,16 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text footer-heading">Your Day Your Way</h5>
+          <h3 class="white-text footer-heading">Your Day Your Way</h3>
           <p class="grey-text text-lighten-4">Plan, eat and workout the way you want. It's your day!</p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <h5 class="white-text footer-heading">Useful Links</h5>
+          <h3 class="white-text footer-heading">Useful Links</h3>
           <ul class="social-links">
             <li><a class="grey-text text-lighten-3" href="{{ url_for('contact') }}"><i class="fa fa-envelope"
                   aria-hidden="true"></i> Contact Us</a></li>
           </ul>
-          <h5 class="white-text footer-heading">Our Socials</h5>
+          <h3 class="white-text footer-heading">Our Socials</h3>
           <ul class="social-links">
             <li><a class="grey-text text-lighten-3" target="_blank" href="https://twitter.com" rel="noopener">
                 <i class="fab fa-twitter" aria-hidden="true"></i>
