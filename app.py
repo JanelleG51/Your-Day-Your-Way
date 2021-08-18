@@ -141,6 +141,13 @@ def meals():
     return render_template("meals.html", meals=meals)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search_meals():
+    query = request.form.get("query")
+    meals = list(mongo.db.meals.find({"$text": {"$search": query}}))
+    return render_template("meals.html", meals=meals)
+
+
 @app.route("/workouts")
 @login_required
 def workouts():
@@ -155,11 +162,7 @@ def search_workouts():
     return render_template("workouts.html", workouts=workouts)
 
 
-@app.route("/search", methods=["GET", "POST"])
-def search_meals():
-    query = request.form.get("query")
-    meals = list(mongo.db.meals.find({"$text": {"$search": query}}))
-    return render_template("meals.html", meals=meals)
+
 
 
 @app.route("/logout")
