@@ -14,72 +14,69 @@
     </div>
 </div>
 
-<div class="row profile-image-row">
-    <div class="col s12 m4">
-        <div class="card-image"> <img src=""></div>
-        <div class="row">
-            <div class="col s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ username.profile_url }}">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="" alt="profile photo">
+          <span class="card-title">Card Title</span>
         </div>
-
-
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
     </div>
+  </div>
 
 
-    <form class="col s12 m8">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
+</div>
+
+
+<form class="col s12 m8">
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 file-field">
+            <div class="btn-small">
+                <span>Select Image</span>
+                <input id="profile_url" name="profile_url" type="file" accept="image/*">
             </div>
-            <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="username" type="text" class="validate">
-                <label for="username">Username</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 file-field">
-                <div class="btn-small">
-                    <span>Select Image</span>
-                    <input id="profile_url" name="profile_url" type="file" accept="image/*">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-        </div>
-    </form>
+    </div>
+</form>
 
 </div>
 
@@ -94,18 +91,20 @@
 <div class="row">
     {% for meal in meals %}
     {% if meal.created_by == session['user'] %}
-    <div class="col s6 m3">
+    <div class="col s12 m4">
         <div class="card small hoverable center-align">
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
-                    <img src="{{ meal.image_url }}">
+                    <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
                     <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
             </div>
             <div class="card-content">
                 <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
-                <p><span>Prep: {{ meal.prep_time|upper }} min</span><span>Cook: {{ meal.cook_time|upper }}
-                        min</span><span>Servings:
-                        {{ meal.servings }}</span></p>
+                <p class="left-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
+                    <br>
+                    <span>Cook: {{ meal.cook_time|upper }} min</span>
+                    <br>
+                    <span>Servings: {{ meal.servings }}</span></p>
             </div>
         </div>
     </div>
@@ -117,7 +116,7 @@
 
 <div class="row">
     <div class="col s12">
-        <h3 class="center-align">No Results Found</h3>
+        <h6 class="center-align">You haven't added any meals yet!</h6>
     </div>
 </div>
 {% endif %}
@@ -129,35 +128,38 @@
     </div>
 </div>
 {% if workouts|length > 0 %}
-        <div class="row">
-            {% for workout in workouts %}
-                {% if workout.created_by == session['user'] %}
-                        <div class="col s6 m3">
-                            <div class="card small center-align hoverable">
-                                <div class="card-image">
-                                    <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
-                                        <img src="{{ workout.wo_image_url }}">
-                                        <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+<div class="row">
+    {% for workout in workouts %}
+    {% if workout.created_by == session['user'] %}
+    <div class="col s12 m4">
+        <div class="card small center-align hoverable">
+            <div class="card-image">
+                <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
+                    <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
+                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
 
-                                </div>
-                                <div class="card-content">
-                                    <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
-                                    <p><span>Time: {{ workout.workout_duration|upper }} min</span><span>Where:
-                                            {{ workout.workout_location }} </span><span>Level:
-                                            {{ workout.workout_level }}</span></p>
-                                </div>
-                                
-                            </div>
-                         </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-            
-        {% else %}
-            <div>
-                <h3 class="center-align">You haven't added any workouts yet!</h3>
             </div>
+            <div class="card-content small-card-content">
+                <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
+                <p class="left-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
+                    <br><span>Where:
+                        {{ workout.workout_location }} </span>
+                    <br>
+                    <span>Level:
+                        {{ workout.workout_level }}</span></p>
+            </div>
+
         </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% else %}
+<div>
+    <h6 class="center-align">You haven't added any workouts yet!</h6>
+</div>
+</div>
 {% endif %}
 
 
