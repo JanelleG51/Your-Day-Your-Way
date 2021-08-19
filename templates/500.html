@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block title %}500{% endblock %} 
+
+{% block content %}
+
+<div class="row internal-error-row">
+    <div class="col s12 center-align">
+        <h1 class="right-align">500</h1>
+        <h3>
+            Oh dear, it would appear we've made an error!
+            <br>
+            <br>
+            But don't worry, it's not you it's us!
+        </h3>
+        <div class="col s12 error-text">
+            <h4 class="">Not to worry though. Let's get you on the right track again..</h4>
+            <a href="{{ url_for('planner') }}" class="btn error-text">Back to My Planner</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 center-align error-text">
+        <h5>We would always hope our site works for you.
+            <br>
+            If this keeps happening please get in touch and let us know!
+        </h5>
+        <a href="{{ url_for('contact') }}" class="btn error-text">Contact Us</a>
+    </div>
+</div>
+
+{% endblock %}

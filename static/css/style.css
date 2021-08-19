@@ -108,7 +108,7 @@ padding: 5px;
 #title-inset {
 background-color: rgba(55,71,79,0.8);
 color: rgb(5, 210, 213);
-font-size: .87rem;
+font-size: .89rem;
 font-weight: 400;
 letter-spacing: .20vw;
 
@@ -179,6 +179,20 @@ transition: 0.2s ease;
 transform: scale(1.2);
 color: rgb(55,71,79);
 
+}
+
+/* error handlers */
+
+.internal-error-row {
+  background-color: rgb(155, 34, 38, 0.6);
+}
+
+.page-not-found {
+  background-color: rgba(238, 155, 0, 0.8);
+}
+
+.error-text {
+  margin: .55rem;
 }
 
 @media(max-width: 475px){

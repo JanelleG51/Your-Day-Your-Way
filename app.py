@@ -162,9 +162,6 @@ def search_workouts():
     return render_template("workouts.html", workouts=workouts)
 
 
-
-
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -373,6 +370,8 @@ def contact():
                             '<p>We will get back to you as soon as we can.</p>'
                             '<br>'
                             '<p>We hope you are enjoying your day!</p>'
+                            '<br>'
+                            '<p>The Team at Your Day Your Way'
                             % message_field),
                       sender=site_email,
                       cc=[email],
@@ -381,6 +380,16 @@ def contact():
 
         flash("Thank you for contacting us. Your message is on its way!")
     return render_template("contact.html")
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template("500.html"), 500
 
 
 if __name__ == "__main__":

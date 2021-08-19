@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}404{% endblock %}
+
+{% block content %}
+
+<div class="row page-not-found">
+    <div class="col s12 center-align">
+        <h1 class="right-align">404</h1>
+        <h3>
+            Oh dear, you've taken a run in the wrong direction. 
+            <br>
+            <br> 
+            There's nothing on this path!
+        </h3>
+        <div class="col s12 error-text">
+            <h4 class="">Not to worry though. Let's get you on the right track again..</h4>
+            <br>
+         <a href="{{ url_for('planner') }}" class="btn">Back to My Planner</a>
+        </div>
+         
+    </div>
+</div>
+
+
+{% endblock %}
