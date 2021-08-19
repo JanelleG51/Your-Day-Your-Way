@@ -185,7 +185,6 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-
 @app.route("/delete_user/<username>")
 @login_required
 def delete_user(username):
