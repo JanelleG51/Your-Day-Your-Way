@@ -60,6 +60,9 @@
                 {% if session.user|lower == workout.created_by|lower %}
                 <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
                 {% endif %}
+                {% if workout.workout_url %}
+                <a href="{{ workout.workout_url }}" class="btn-small full-link-btn" target="_blank">Link</a></p>
+            {% endif %}
             </div>
         </div>
     </div>

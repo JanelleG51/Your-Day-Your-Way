@@ -15,71 +15,26 @@
 </div>
 
 <div class="row">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="" alt="profile photo">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-</div>
-
-
-<form class="col s12 m8">
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <input id="username" type="text" class="validate">
-            <label for="username">Username</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12 file-field">
-            <div class="btn-small">
-                <span>Select Image</span>
-                <input id="profile_url" name="profile_url" type="file" accept="image/*">
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-image">
+                <img src="" alt="profile photo">
+                <span class="card-title">Card Title</span>
             </div>
-            <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+
+
             </div>
         </div>
     </div>
-</form>
-
 </div>
 
+
+</div>
 
 <div class="row">
     <div class="col s12 center-align">
@@ -100,7 +55,7 @@
             </div>
             <div class="card-content">
                 <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
-                <p class="left-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
+                <p class="center-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
                     <br>
                     <span>Cook: {{ meal.cook_time|upper }} min</span>
                     <br>
@@ -141,7 +96,7 @@
             </div>
             <div class="card-content small-card-content">
                 <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
-                <p class="left-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
+                <p class="center-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
                     <br><span>Where:
                         {{ workout.workout_location }} </span>
                     <br>

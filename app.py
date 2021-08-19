@@ -185,6 +185,20 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+
+@app.route("/delete_user/<username>")
+@login_required
+def delete_user(username):
+
+    if session["user"] == username:
+        mongo.db.users.remove(
+            {"username": username.lower()})
+        flash("Profile Deleted")
+        session.pop("user")
+
+        return redirect(url_for("register"))
+
+
 @app.route("/add_meal", methods=["GET", "POST"])
 @login_required
 def add_meal():

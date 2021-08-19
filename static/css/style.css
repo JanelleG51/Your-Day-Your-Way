@@ -29,7 +29,8 @@ h1, h3, h4,
 .planner-date, 
 .planner-days, 
 .footer-heading,
-.side-nav-title {
+.side-nav-title,
+.orig-url-link {
   font-family: 'Syncopate', sans-serif;
 
 }
@@ -39,7 +40,7 @@ h1, h3, h5, .main-title {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   
 }
 
@@ -56,10 +57,6 @@ h3 {
   font-size: .85rem;
   margin-left: 1.25rem;
 }
-
-img {
-    max-height: 225px;
-  }
 
 
 /*--planner page specific-- */
@@ -113,6 +110,10 @@ font-weight: 700;
   letter-spacing: .20vw;
   
   }
+
+  .card .card-action {
+    padding: 0;
+  }
   
 .card-content {
   margin-bottom: .50rem;
@@ -120,6 +121,10 @@ font-weight: 700;
 
 .small-card-content {
   margin: 0;
+}
+
+.orig-url-link {
+  font-size: 1.25rem;
 }
 
 p > span{
@@ -169,6 +174,10 @@ background-color: black;
 
 .back-btn {
   margin-top: 2rem;
+}
+
+.full-link-btn {
+  background-color: rgb(187, 62, 3);
 }
 
 /* footer */
