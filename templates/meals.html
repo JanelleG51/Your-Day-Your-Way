@@ -1,7 +1,6 @@
 {% extends "base.html" %}
+{% block title %}Meals{% endblock %}
 {% block content %}
-
-
 
 <div class="row">
     <div class="col s12">
@@ -30,11 +29,14 @@
         </div>
     </form>
 </div>
+
 <div class="row">
     <div class="col s4 center-align add-content-link"><a href="{{ url_for('workouts') }}" aria-label="workouts">Workouts
             <i class="fas fa-dumbbell"></i></a></div>
-    <div class="col s4 center-align add-content-link"><a href="{{ url_for('planner') }}" aria-label="my planner">My
-            Planner <i class="fas fa-calendar-week"></i></a></div>
+        {% if session.user %}
+            <div class="col s4 center-align add-content-link"><a href="{{ url_for('profile', username=session['user']) }}" aria-label="profile">My
+                Profile <i class="fas fa-calendar-week"></i></a></div>
+        {% endif %}
     <div class="col s4 center-align add-content-link"><a href="{{ url_for('add_meal') }}" aria-label="add meal">Add Meal
             <i class="fas fa-plus"></i></a></div>
 </div>
@@ -58,19 +60,16 @@
             </div>
             <div class="card-action">
                 {% if session.user|lower == meal.created_by|lower %}
-                <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small"
-                    aria-label="edit button">Edit</a>
-                {% endif %}
-                {% if meal.recipe_url %}
-                <a href="{{ meal.recipe_url }}" class="btn-small full-link-btn" target="_blank">Link</a>
+                    <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small"
+                        aria-label="edit button">Edit</a>
                 {% endif %}
                 <span class="rating-display"><em>Rating: {{ meal.ratings }}</em></span>
-
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+
 {% else %}
 <div class="row">
     <div class="col s12">

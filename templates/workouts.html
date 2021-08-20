@@ -33,12 +33,15 @@
 
 
 <div class="row">
-    <div class="col s4 center-align add-content-link"><a href="{{ url_for('meals') }}" aria-label="my planner">Meals <i
+    <div class="col s4 center-align add-content-link"><a href="{{ url_for('meals') }}" aria-label="meals">Meals <i
                 class="fas fa-utensils"></i></a></div>
-    <div class="col s4 center-align add-content-link"><a href="{{ url_for('planner') }}" aria-label="my planner">My
-            Planner <i class="fas fa-calendar-week"></i></a></div>
+        {% if session.user %}
+            <div class="col s4 center-align add-content-link"><a href="{{ url_for('profile', username=session['user']) }}" aria-label="profile">My
+                Profile <i class="fas fa-calendar-week"></i></a></div>
+        {% endif %}
     <div class="col s4 center-align add-content-link"><a href="{{ url_for('add_workout') }}"
-            aria-label="add workout">Add Workout <i class="fas fa-plus"></i></a></div>
+            aria-label="add workout">Add Workout <i class="fas fa-plus"></i></a>
+    </div>
 </div>
 
 {% if workouts|length > 0 %}
@@ -60,10 +63,7 @@
             </div>
             <div class="card-action">
                 {% if session.user|lower == workout.created_by|lower %}
-                <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small" aria-label="edit button">Edit</a>
-                {% endif %}
-                {% if workout.workout_url %}
-                <a href="{{ workout.workout_url }}" class="btn-small full-link-btn" target="_blank">Link</a>
+                    <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small" aria-label="edit button">Edit</a>
                 {% endif %}
                 <span class="rating-display"><em>Rating: {{ workout.ratings }}</em></span>
             </div>
