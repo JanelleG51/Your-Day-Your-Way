@@ -1,121 +1,125 @@
 {% extends "base.html" %}
+{% block title %}Profile{% endblock %}
 {% block content %}
 
-
-
-<div class="row">
-    <div class="col s12 m8 offset-m2">
-        <div class="card-panel">
-            <h3 class="center-align light-blue-text text-darken-4">
-                {{ username }}'s Profile
-            </h3>
-        </div>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-image">
-                <img src="" alt="profile photo">
-                <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</div>
-
-<div class="row">
-    <div class="col s12 center-align">
-        <h5>Your Meals</h5>
-    </div>
-</div>
-
-{% if meals|length > 0 %}
-<div class="row">
-    {% for meal in meals %}
-    {% if meal.created_by == session['user'] %}
-    <div class="col s12 m4">
-        <div class="card small hoverable center-align">
-            <div class="card-image">
-                <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
-                    <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
-                    <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
-            </div>
-            <div class="card-content">
-                <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
-                <p class="center-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
-                    <br>
-                    <span>Cook: {{ meal.cook_time|upper }} min</span>
-                    <br>
-                    <span>Servings: {{ meal.servings }}</span></p>
-            </div>
-        </div>
-    </div>
-
-    {% endif %}
-    {% endfor %}
-</div>
-{% else %}
-
-<div class="row">
+<div class="row back-btn">
     <div class="col s12">
-        <h6 class="center-align">You haven't added any meals yet!</h6>
+        <a href="#" onclick="takeMeBack()"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 </div>
-{% endif %}
 
-
-<div class="row">
-    <div class="col s12 center-align">
-        <h5>Your Workouts</h5>
-    </div>
+<div>
+    <p class="home-date">Today is: {{ date }}</p>
 </div>
-{% if workouts|length > 0 %}
-<div class="row">
-    {% for workout in workouts %}
-    {% if workout.created_by == session['user'] %}
-    <div class="col s12 m4">
-        <div class="card small center-align hoverable">
-            <div class="card-image">
-                <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
-                    <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
-                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
 
+<div class="description-container">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card-panel">
+                <h3 class="center-align profile-heading">
+                    {{ username }}'s Profile
+                </h3>
             </div>
-            <div class="card-content small-card-content">
-                <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
-                <p class="center-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
-                    <br><span>Where:
-                        {{ workout.workout_location }} </span>
-                    <br>
-                    <span>Level:
-                        {{ workout.workout_level }}</span></p>
-            </div>
-
         </div>
     </div>
-    {% endif %}
-    {% endfor %}
-</div>
 
-{% else %}
-<div>
-    <h6 class="center-align">You haven't added any workouts yet!</h6>
+    <div class="row">
+        <div class="col s12 center-align">
+            <p class="profile-text">Everthing you add is right here waiting for you!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 center-align add-content-link"><a href="{{ url_for('workouts') }}" aria-label="workouts">Workouts
+                <i class="fas fa-dumbbell"></i></a></div>
+        <div class="col s6 center-align add-content-link"><a href="{{ url_for('meals') }}" aria-label="add meal">Meals
+                <i class="fas fa-plus"></i></a></div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 center-align">
+            <h5 class="profile-heading">Your Meals</h5>
+        </div>
+    </div>
+
+    {% if meals|length > 0 %}
+        <div class="row">
+            {% for meal in meals %}
+                {% if meal.created_by == session['user'] %}
+                        <div class="col s12 m4">
+                            <div class="card small hoverable center-align">
+                                <div class="card-image">
+                                    <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
+                                        <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
+                                        <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
+                                </div>
+                            <div class="card-content">
+                                <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
+                                <p class="center-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
+                                    <br>
+                                    <span>Cook: {{ meal.cook_time|upper }} min</span>
+                                    <br>
+                                    <span>Servings: {{ meal.servings }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% else %}
+
+        <div class="row">
+            <div class="col s12">
+                <h6 class="center-align">You haven't added any meals yet!</h6>
+            </div>
+        </div>
+
+    {% endif %}
+    
+    <div class="row">
+        <div class="col s12 center-align">
+            <h5 class="profile-heading">Your Workouts</h5>
+        </div>
+    </div>
+
+    {% if workouts|length > 0 %}
+        <div class="row">
+            {% for workout in workouts %}
+                {% if workout.created_by == session['user'] %}
+                    <div class="col s12 m4">
+                        <div class="card small center-align hoverable">
+                            <div class="card-image">
+                                <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
+                                    <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
+                                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+
+                            </div>
+                            <div class="card-content small-card-content">
+                                <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
+                                <p class="center-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
+                                    <br><span>Where:
+                                        {{ workout.workout_location }} </span>
+                                    <br>
+                                    <span>Level:
+                                        {{ workout.workout_level }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% else %}
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h6 class="profile-heading">You haven't added any workouts yet!</h6>
+                </div>
+               
+            </div>
+    {% endif %}
+
 </div>
-</div>
-{% endif %}
 
 
 

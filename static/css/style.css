@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syncopate:wght@400;700&display=swap');
 
 /* global styling */
-
 body {
   color: rgb(33, 46, 53);
   height: 100%;
@@ -30,7 +29,9 @@ h1, h3, h4,
 .planner-days, 
 .footer-heading,
 .side-nav-title,
-.orig-url-link {
+.orig-url-link,
+.home-date,
+.profile-text {
   font-family: 'Syncopate', sans-serif;
 
 }
@@ -59,27 +60,34 @@ h3 {
   margin-left: 1.25rem;
 }
 
-/*--planner page specific-- */
+.profile-text {
+  font-size: 1.5rem;
 
-.planner-date, .planner-days {
-font-family: 'Syncopate', Arial;
+}
+
+/* home page specific */
+.home-heading {
+  font-size: 2.5rem;
+}
+
+
+
+.description-container {
+  background-color: rgba(0, 18, 25, 0.3);
+  position: relative;
+  padding: 1rem;
+}
+
+.descriptor-box-img{
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.home-date {
 font-size: 1.15rem;
 }
 
-.planner-days {
-font-size: .85rem;
-margin: 8px;
-text-shadow: .25px .25px rgb(0, 18, 25)
-
-}
-
-.planner-days:hover {
-color: rgb(10, 147, 150);
-font-weight: 600;
-margin: 10px;
-text-decoration: underline;
-
-}
 
 /* meal and workout display cards */
 .full-recipe-image {
@@ -136,6 +144,7 @@ margin-top: .50rem;
 }
 
 .rating-display {
+  font-weight: 600;
   text-transform: uppercase;
   margin-left: .25rem;
 }
@@ -165,11 +174,22 @@ color: rgb(155, 34, 38),
   color: white;
 }
 
-.login {
-  color: blue;
+.landing-page-btn{
+  background-color: rgb(187, 62, 3);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+
 }
 
+/* flash text */
+.flash-text {
+  font-size: 1.75rem;
+}
 
+.profile-heading, .descriptor-heading {
+  color: rgb(187, 62, 3);
+}
 
 
 /* modal */
@@ -198,7 +218,6 @@ background-color: black;
 }
 
 /* footer */
-
 .page-footer {
 background-color: rgb(10, 147, 150);
 
@@ -226,7 +245,6 @@ color: rgb(55,71,79);
 }
 
 /* error handlers */
-
 .internal-error-row {
   background-color: rgb(155, 34, 38, 0.6);
 }

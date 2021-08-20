@@ -59,9 +59,17 @@ def login_required(f):
 
 
 @app.route("/")
-@app.route("/landing")
-def landing_page():
-    return render_template("landing.html")
+@app.route("/home")
+def home():
+    """
+    Grab current date and time and display on the home screen.
+    
+    """
+    date = datetime.today().strftime('%A - %D')
+    workouts = mongo.db.workouts.find().sort("_id", -1).limit(3)
+    meals = mongo.db.meals.find().sort("_id", -1).limit(3)
+    return render_template("home.html", workouts=workouts,
+                           meals=meals, date=date)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -102,7 +110,7 @@ def login():
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back, {}".format(request.form.get("username")))
-                return redirect(url_for("planner", username=session["user"]))
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -112,23 +120,6 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-
-
-@app.route("/planner")
-@login_required
-def planner():
-    days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
-    date = datetime.today().strftime('%A - %D')
-    workouts = mongo.db.workouts.find().sort("_id", -1).limit(1)
-    breakfast = mongo.db.meals.find(
-        {"meal_category": "Breakfast"}).sort("_id", -1).limit(1)
-    lunch = mongo.db.meals.find(
-        {"meal_category": "Lunch"}).sort("_id", -1).limit(1)
-    dinner = mongo.db.meals.find(
-        {"meal_category": "Dinner"}).sort("_id", -1).limit(1)
-    return render_template("planner.html", workouts=workouts,
-                           breakfast=breakfast,
-                           lunch=lunch, dinner=dinner, date=date, days=days)
 
 
 @app.route("/meals")
@@ -178,6 +169,7 @@ def logout():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 @login_required
 def profile(username):
+    date = datetime.today().strftime('%A - %D')
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     meals = list(mongo.db.meals.find())
@@ -185,7 +177,7 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html", username=username, meals=meals,
-                               workouts=workouts)
+                               workouts=workouts, date=date)
 
     return redirect(url_for("login"))
 
