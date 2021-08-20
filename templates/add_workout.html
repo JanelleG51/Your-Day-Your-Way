@@ -2,7 +2,7 @@
 {% block title %}Add Workout{% endblock %}
 {% block content %}
 
-<h3 class=" center-align">Add Workout</h3>
+<h3 class="center-align">Add Workout</h3>
 <section class="container">
 
     <!-- all form fields to add a workout to DB -->
@@ -11,36 +11,35 @@
             <div class="row">
                 <div class="input-field col s12 m4">
                     <select id="workout_category" name="workout_category" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
+                        <option disabled selected>Choose Category</option>
                         {% for category in workout_categories %}
-                        <option value="{{ category.workout_category }}">{{ category.workout_category }}</option>
+                            <option value="{{ category.workout_category }}">{{ category.workout_category }}</option>
                         {% endfor %}
                     </select>
-                    <label>Category</label>
+                    <label for="workout_category" aria-labelledby="workout_category">Category</label>
                 </div>
                 <div class="input-field col s12 m4">
                     <select id="workout_level" name="workout_level" class="validate" required>
-                        <option value="" disabled selected>Choose Level</option>
+                        <option disabled selected>Choose Level</option>
                         {% for category in workout_levels %}
-                        <option value="{{ category.workout_level }}">{{ category.workout_level }}</option>
+                            <option value="{{ category.workout_level }}">{{ category.workout_level }}</option>
                         {% endfor %}
                     </select>
                     <label>Level</label>
                 </div>
                 <div class="input-field col s12 m4">
                     <select id="workout_location" name="workout_location" class="validate" required>
-                        <option value="" disabled selected>Choose Location</option>
+                        <option disabled selected>Choose Location</option>
                         {% for category in workout_locations %}
-                        <option value="{{ category.workout_location }}">{{ category.workout_location }}</option>
+                            <option value="{{ category.workout_location }}">{{ category.workout_location }}</option>
                         {% endfor %}
                     </select>
-                    <label>Location</label>
+                    <label for="workout_location" aria-labelledby="workout_location">Location</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="workout_title" name="workout_title" minlength="5" maxlength="50" type="text"
                         class="validate" required>
                     <label for="workout_title" aria-labelledby="workout_title"><i class="fas fa-dumbbell"></i> Workout
@@ -69,8 +68,7 @@
             </div>
 
             <div class="row">
-                <div class="input-field col s12">
-                    <i class=""></i>
+                <div class="input-field col s12"> 
                     <input id="workout_url" name="workout_url" type="url" class="validate">
                     <label for="workout_url" aria-labelledby="workout_url"><i class="fas fa-link"></i> Workout
                         Link</label>
@@ -79,7 +77,6 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="workout_duration" name="workout_duration" type="text" class="validate" required>
                     <label for="workout_duration" aria-labelledby="workout_duration"><i class="far fa-clock"></i>
                         Duration</label>
@@ -88,7 +85,6 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="sets" name="sets" type="text" class="validate">
                     <label for="sets" aria-labelledby="sets"><i class="fas fa-sort-amount-up"></i> Number of
                         sets</label>
@@ -97,7 +93,6 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="workout_steps" name="workout_steps" type="text" minlength="2" maxlength="50"
                         class="validate">
                     <label for="workout_steps" aria-labelledby="workout_steps"><i class="fas fa-list-ol"></i> Step
@@ -109,6 +104,7 @@
             <div class="workout_list">
 
             </div>
+            
             <div class="row">
                 <div class="col s6 m12 center-align">
                     <button class="btn-small" type="submit">
@@ -122,7 +118,7 @@
             </div>
         </form>
     </div>
-    
+
 </section>
 
 {% endblock %}
