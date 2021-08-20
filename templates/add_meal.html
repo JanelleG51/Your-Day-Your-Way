@@ -14,7 +14,7 @@
                     <select id="meal_category" name="meal_category" class="validate" required>
                         <option disabled selected>Choose Category</option>
                         {% for category in meal_categories %}
-                        <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
+                            <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
                         {% endfor %}
                     </select>
                     <label for="meal_catergory" aria-labelledby="meal_category">Meal Category</label>
