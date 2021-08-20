@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+
+<div class="row center-align">
+    <div class="cols12 center-align">
+        <h1 class="home-heading">Your Day Your Way</h1>
+    </div>
+</div>
+
+<div>
+    <p class="home-date">Today is: {{ date }}</p>
+</div>
+
+<main class="description-container">
+    <div class="row">
+      <div class="col s12 m6">
+        <img src="{{ url_for('static', filename='images/woman-sitting-at-laptop-small.jpg') }}"
+          class="descriptor-box-img" alt="Woman sitting at a laptop">
+      </div>
+      <div class="col s12 m6">
+        <h2 class="descriptor-heading">Plan It</h2>
+        <p>Your Day Your Way allows you store all your favourite workout and recipes in one easy place. 
+            You can see what other users add and even rate all recipes and workouts to let others know what you would recommend. 
+            Others can rate yours too!
+            By being able to view all of your content on your profile page you can easily plan what you want to eat and how you want to work out that day….any day…it’s your day.
+            </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <img src="{{ url_for('static', filename='images/pasta-on-a-plate-small.jpg') }}" class="descriptor-box-img"
+          alt="A plate of pasta sitting against a light blue painted background">
+      </div>
+      <div class="col s12 m6">
+        <h2 class="descriptor-heading">Eat It</h2>
+        <p>If there are recipes that you have to repeatedly search to find you can add the link and you will be able to easily find them from your profile anytime you want. 
+            Decide you don’t like a recipe anymore, no problem, just delete it. Get creative and change a few ingredients, no problem, you can update it!</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <img src="{{ url_for('static', filename='images/woman-exercising-small.jpg') }}" class="descriptor-box-img"
+          alt="A woman lying on a matt doing a sit-up">
+      </div>
+      <div class="col s12 m6">
+        <h2 class="descriptor-heading">Work It</h2>
+        <p>Wish you could do the same with workouts as you can with recipes…well you can! Add your own workouts and get some inspiration from workouts other users upload. 
+            If you have a session at the gym that you want to keep and share it with others you can. 
+            Sometimes there are workouts online we love, you can save the link in you profile and come back to it anytime. You're in control!
+        </p>
+      </div>
+    </div>
+    <!-- futher call to action buttons -->
+    <div class="row">
+      <div class="col s12 m6 center-align">
+        <a href="{{ url_for('register') }}" class="btn landing-page-btn">Register</a>
+        <span class="sr-only">Register</span>
+      </div>
+      <div class="col s12 m6 center-align">
+        <a href="{{ url_for('login') }}" class="btn landing-page-btn">Login</a>
+        <span class="sr-only">Login</span>
+      </div> 
+    </div>
+  </div>
+
+  </main>
+
+
+<div class="row"> 
+
+    <div class="row">
+        {% for meal in meals %}
+            <div class="col s12 m4">
+                <div class="card small hoverable center-align">
+                    <div class="card-image">
+                        <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
+                            <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
+                            <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
+                    </div>
+                    <div class="card-content">
+                        <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
+                        <p class="center-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
+                            <br>
+                            <span>Cook: {{ meal.cook_time|upper }} min</span>
+                            <br>
+                            <span>Servings: {{ meal.servings }}</span></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row">
+    {% for workout in workouts %}
+    <div class="col s12 m4">
+        <div class="card small center-align hoverable">
+            <div class="card-image">
+                <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
+                    <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
+                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+
+            </div>
+            <div class="card-content small-card-content">
+                <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
+                <p class="center-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
+                    <br><span>Where:
+                        {{ workout.workout_location }} </span>
+                    <br>
+                    <span>Level:
+                        {{ workout.workout_level }}</span></p>
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
