@@ -4,33 +4,35 @@
 <h3 class=" center-align">Add Meal</h3>
 <section class="container">
 
+<!-- all form fields to add a meal to DB -->
     <div class="row card-panel">
         <form class="col s12" method="POST" action="{{ url_for('add_meal') }}" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class=""></i>
                     <select id="meal_category" name="meal_category" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
+                        <option disabled selected>Choose Category</option>
                         {% for category in meal_categories %}
                         <option value="{{ category.meal_category }}">{{ category.meal_category }}</option>
                         {% endfor %}
                     </select>
-                    <label for="meal_catergory">Meal Category</label>
+                    <label for="meal_catergory" aria-labelledby="meal_category">Meal Category</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <i class=""></i>
                     <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
                         required>
-                    <label for="recipe_name">Recipe Name</label>
+                    <label for="recipe_name" aria-labelledby="recipe_name"><i class="fas fa-utensils"></i> Recipe
+                        Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12 file-field">
                     <div class="btn-small">
-
                         <input id="image_url" name="image_url" type="file" accept="image/*" required>
-                        <label for="image_url">Add photo</label>
+                        <label for="image_url" aria-labelledby="image_url" class="add-photo-btn">Add photo</label>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -41,31 +43,34 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class=""></i>
-                    <input id="recipe_url" name="recipe_url" type="url" class="validate" required>
-                    <label for="recipe_url">Recipe Link</label>
+                    <input id="recipe_url" name="recipe_url" type="url" class="validate">
+                    <label for="recipe_url" aria-labelledby="recipe_url"><i class="fas fa-link"></i> Recipe Link</label>
                 </div>
             </div>
+
             <div class="row">
                 <div class="input-field col s12 m4">
                     <i class=""></i>
-                    <input id="prep_time" name="prep_time" type="text" class="validate">
-                    <label for="prep_time">Prep Time</label>
+                    <input id="prep_time" name="prep_time" type="text" class="validate" required>
+                    <label for="prep_time" aria-labelledby="prep_time"><i class="far fa-clock"></i> Prep Time</label>
                 </div>
                 <div class="input-field col s12 m4">
                     <i class=""></i>
-                    <input id="cook_time" name="cook_time" type="text" class="validate">
-                    <label for="cook_time">Cook Time</label>
+                    <input id="cook_time" name="cook_time" type="text" class="validate" required>
+                    <label for="cook_time" aria-labelledby="cook_time"><i class="far fa-clock"></i> Cook Time</label>
                 </div>
                 <div class="input-field col s12 m4">
                     <i class=""></i>
-                    <input id="servings" name="servings" type="text" class="validate">
-                    <label for="servings">Servings</label>
+                    <input id="servings" name="servings" type="text" class="validate" required>
+                    <label for="servings" aria-labelledby="servings"><i class="fas fa-utensils"></i> Servings</label>
                 </div>
             </div>
+
             <div class="row">
                 <div class=" input-field col s12">
-                    <label for="ratings" class="">Rating between 1 and 5</label>
-                    <input type="number" class="validate" id="ratings" name="ratings" min="1" max="5">
+                    <label for="ratings" aria-labelledby="ratings"><i class="far fa-star"></i> Rating between 1 and
+                        5</label>
+                    <input type="number" class="validate" id="ratings" name="ratings" min="1" max="5" required>
                 </div>
             </div>
 
@@ -74,10 +79,12 @@
                     <i class=""></i>
                     <input id="ingredients" name="ingredients" type="text" minlength="2" maxlength="250"
                         class="validate">
-                    <label for="ingredients">Ingredient 1:</label>
+                    <label for="ingredients" aria-labelledby="ingredients"><i class="fas fa-seedling"></i> Ingredient
+                        1:</label>
                     <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
                 </div>
             </div>
+
             <div class="row ingredient_list">
 
             </div>
@@ -85,12 +92,12 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class=""></i>
-                    <input id="method" name="method" type="text" minlength="3" maxlength="500" class="validate">
-                    <label for="method">Step 1:</label>
+                    <input id="method" name="method" type="text" aria-labelledby="method" minlength="3" maxlength="500"
+                        class="validate">
+                    <label for="method"><i class="fas fa-utensil-spoon"></i> Step 1:</label>
                     <a class="btn-small add_step">Add Step<i class=""></i></a>
                 </div>
             </div>
-            
 
             <div class="method_list">
 
@@ -98,14 +105,13 @@
 
             <div class="row">
                 <div class="col s6 m12 center-align">
-                    <button class="btn-small" type="submit">
-                        Add Meal
+                    <button class="btn-small" type="submit" aria-label="add meal">
+                        <i class="fas fa-plus"></i> Add Meal
                     </button>
                 </div>
                 <div class="col s6 m12 center-align">
                     <a href="{{ url_for('meals') }}" class="btn-small red darken-4">
-                        Cancel</a>
-
+                        <i class="far fa-times-circle"></i> Cancel</a>
                 </div>
             </div>
         </form>
