@@ -5,7 +5,7 @@
 <h3 class=" center-align">Add Meal</h3>
 <section class="container">
 
-<!-- all form fields to add a meal to DB -->
+    <!-- all form fields to add a meal to DB -->
     <div class="row card-panel">
         <form class="col s12" method="POST" action="{{ url_for('add_meal') }}" enctype="multipart/form-data">
             <div class="row">
@@ -21,7 +21,6 @@
                 </div>
 
                 <div class="input-field col s12 m6">
-                    <i class=""></i>
                     <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
                         required>
                     <label for="recipe_name" aria-labelledby="recipe_name"><i class="fas fa-utensils"></i> Recipe
@@ -43,7 +42,6 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="recipe_url" name="recipe_url" type="url" class="validate">
                     <label for="recipe_url" aria-labelledby="recipe_url"><i class="fas fa-link"></i> Recipe Link</label>
                 </div>
@@ -51,17 +49,14 @@
 
             <div class="row">
                 <div class="input-field col s12 m4">
-                    <i class=""></i>
                     <input id="prep_time" name="prep_time" type="text" class="validate" required>
                     <label for="prep_time" aria-labelledby="prep_time"><i class="far fa-clock"></i> Prep Time</label>
                 </div>
                 <div class="input-field col s12 m4">
-                    <i class=""></i>
                     <input id="cook_time" name="cook_time" type="text" class="validate" required>
                     <label for="cook_time" aria-labelledby="cook_time"><i class="far fa-clock"></i> Cook Time</label>
                 </div>
                 <div class="input-field col s12 m4">
-                    <i class=""></i>
                     <input id="servings" name="servings" type="text" class="validate" required>
                     <label for="servings" aria-labelledby="servings"><i class="fas fa-utensils"></i> Servings</label>
                 </div>
@@ -77,12 +72,11 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
                     <input id="ingredients" name="ingredients" type="text" minlength="2" maxlength="250"
                         class="validate">
                     <label for="ingredients" aria-labelledby="ingredients"><i class="fas fa-seedling"></i> Ingredient
                         1:</label>
-                    <a class="btn-small add_ingredient">Add Ingredient<i class=""></i></a>
+                    <a class="btn-small add_ingredient">Add Ingredient</a>
                 </div>
             </div>
 
@@ -92,11 +86,9 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class=""></i>
-                    <input id="method" name="method" type="text" aria-labelledby="method" minlength="3" maxlength="500"
-                        class="validate">
-                    <label for="method"><i class="fas fa-utensil-spoon"></i> Step 1:</label>
-                    <a class="btn-small add_step">Add Step<i class=""></i></a>
+                    <input id="method" name="method" type="text" minlength="3" maxlength="500" class="validate">
+                    <label for="method" aria-labelledby="method"><i class="fas fa-utensil-spoon"></i> Step 1:</label>
+                    <a class="btn-small add_step">Add Step</a>
                 </div>
             </div>
 
