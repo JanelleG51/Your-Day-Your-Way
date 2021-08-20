@@ -156,6 +156,10 @@ def search_meals():
 @login_required
 def workouts():
     workouts = list(mongo.db.workouts.find())
+
+    for i in range(len(workouts)):
+        workouts[i]['ratings'] = round(
+            sum(workouts[i]['ratings']) / len(workouts[i]['ratings']), 2)
     return render_template("workouts.html", workouts=workouts)
 
 
@@ -270,6 +274,7 @@ def add_workout():
             "workout_duration": request.form.get("workout_duration"),
             "sets": request.form.get("sets"),
             "workout_steps": workout_list,
+            "ratings": [int(request.form.get('ratings'))],
             "created_by": session["user"]
         }
 
@@ -285,6 +290,18 @@ def add_workout():
     return render_template(
         "add_workout.html", workout_categories=workout_categories,
         workout_levels=workout_levels, workout_locations=workout_locations)
+
+
+@app.route("/rate_workout/<workout_id>", methods=["GET", "POST"])
+def rate_workout(workout_id):
+
+    if request.method == "POST":
+        workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
+        workout['ratings'].append(int(request.form.get("add_rating")))
+
+        mongo.db.workouts.update_one({"_id": ObjectId(workout_id)},
+                                     {"$set": workout})
+    return redirect(url_for("workouts"))
 
 
 @app.route("/edit_meal/<meal_id>", methods=["GET", "POST"])
