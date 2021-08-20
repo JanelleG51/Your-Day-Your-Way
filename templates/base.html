@@ -55,6 +55,9 @@
           <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
           </li>
           {% else %}
+          <li></i><a href="{{ url_for('planner') }}"><i class="fas fa-calendar-week"></i>My
+            Planner</a>
+        </li>
           <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Log In</a>
           </li>
           <li><a href="{{ url_for('register') }}"><i

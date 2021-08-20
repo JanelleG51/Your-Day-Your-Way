@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Full Workout{% endblock %}
 {% block content %}
 
 <div class="row back-btn">
@@ -16,7 +17,7 @@
     <div class="row">
         <div class="col s12 center-align">
             {% if workout.workout_url %}
-            <p class="orig-url-link">Link to workout <a href="{{ workout.workout_url }}" class="btn-small full-link-btn" target="_blank">Here</a></p>
+                <p class="orig-url-link">Link to workout <a href="{{ workout.workout_url }}" class="btn-small full-link-btn" target="_blank">Here <i class="fas fa-link"></i></a></p>
             {% endif %}
         </div>    
     </div>
@@ -31,10 +32,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s12 right-align">
+        <div class="col s12 center-align">
             {% if session.user|lower == workout.created_by|lower %}
-                <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit</a>
-                <a href="#modal1" class="btn-small red darken-4 modal-trigger">Delete</a>
+                <a href="{{ url_for('edit_workout', workout_id=workout._id) }}" class="btn-small">Edit <i class="fas fa-plus"></i></a>
+                <a href="#modal1" class="btn-small red darken-4 modal-trigger">Delete <i class="far fa-times-circle"></i></a>
             {% endif %}
         </div>
     </div>
@@ -42,8 +43,8 @@
     <div class="row">
         <div class="col s12 m8 offset-m2 center-align">
             <form method="POST" action="{{ url_for('rate_workout', workout_id=workout._id )}}">
-                <label for="add_rating" class="">Between 1 and 5</label>
-                <input type="number" class="" id="add_rating" name="add_rating" min="1" max="5">
+                <label for="add_rating" class=""><i class="far fa-star"></i> Between 1 and 5</label>
+                <input type="number" id="add_rating" name="add_rating" min="1" max="5">
                 <button type="submit" class="btn-small">Rate</button>
             </form>
         </div>
@@ -52,7 +53,7 @@
     <div class="row">
         <div class="col s12 m6">
             <h3>Steps</h3>
-            <ul class="">
+            <ul>
                 {% for step in workout.workout_steps %}
                      <li>{{ step }}</li>
                 {% endfor %}
@@ -68,6 +69,8 @@
     
 </section>
 
+<!-- defensive design modal to provide confimation to delete -->
+
 <div id="modal1" class="modal">
     <div class="modal-content modal-header">
         <h4 class="center-align">Please confirm your choice</h4>
@@ -77,9 +80,9 @@
         
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close btn">Cancel</a>
+        <a href="#!" class="modal-close btn">Cancel</i></a>
         <a href="{{ url_for('delete_workout', workout_id=workout._id) }}"
-            class="btn delete-btn">Delete</a>
+            class="btn delete-btn">Delete <i class="far fa-times-circle"></i></a>
     </div>
 </div>
 

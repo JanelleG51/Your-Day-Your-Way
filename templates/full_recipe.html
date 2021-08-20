@@ -9,66 +9,70 @@
 </div>
 
 <section class="container">
+
     <div class="row center-align">
         <h3 class="card-title">{{ meal.recipe_name }}</h3>
         <p><span>Prep time: {{ meal.prep_time }} mins</span><span>Cook time: {{ meal.cook_time }}
                 mins</span><span>Servings: {{ meal.servings }}</span></p>
     </div>
+
     <div class="row">
         <div class="col s12 center-align">
             {% if meal.recipe_url %}
-            <p class="orig-url-link">Original Recipe <a href="{{ meal.recipe_url }}" class="btn-small full-link-btn"
-                    target="_blank">Here</a></p>
+                <p class="orig-url-link">Original Recipe <a href="{{ meal.recipe_url }}" class="btn-small full-link-btn"
+                        target="_blank">Here <i class="fas fa-link"></i></a></p>
             {% endif %}
         </div>
-
-    <div class="row">
-        <div class="col s12">
-            <div class="card">
-                <div class="card-image">
-                    <img class="full-recipe-image" src="{{ meal.image_url }}">
-                    <span class="card-title">{{ meal.meal_category }}</span>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="full-recipe-image" src="{{ meal.image_url }}">
+                        <span class="card-title">{{ meal.meal_category }}</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12 center-align">
-            {% if session.user|lower == meal.created_by|lower %}
-            <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small">Edit</a>
-            <a href="#modal1" class="btn-small red darken-4 modal-trigger">Delete</a>
-            {% endif %}
-        </div>
-        
+        <div class="row">
+            <div class="col s12 center-align">
+                {% if session.user|lower == meal.created_by|lower %}
+                    <a href="{{ url_for('edit_meal', meal_id=meal._id) }}" class="btn-small"></i>
+                        Edit <i class="fas fa-plus"></i></a>
+                    <a href="#modal1" class="btn-small red darken-4 modal-trigger">
+                        Delete <i class="far fa-times-circle"></i></a>
+                {% endif %}
+            </div>
         </div>
         <div>
             <div class="col s12 m8 offset-m2 center-align">
                 <form method="POST" action="{{ url_for('rate_meal', meal_id=meal._id )}}">
-                    <label for="add_rating" class="">Between 1 and 5</label>
-                    <input type="number" class="" id="add_rating" name="add_rating" min="1" max="5">
-                    <button type="submit" class="btn-small">Rate</button>
+                    <label for="add_rating"><i class="far fa-star"></i>Between 1 and 5</label>
+                    <input type="number" id="add_rating" name="add_rating" min="1" max="5">
+                    <button type="submit" class="btn-small"> Rate</button>
                 </form>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col s12 m6">
             <h3>Ingredients</h3>
-            <ul class="">
+            <ul>
                 {% for ingredient in meal.ingredients %}
-                <li>{{ ingredient }}</li><br>
+                    <li>{{ ingredient }}</li><br>
                 {% endfor %}
             </ul>
         </div>
         <div class="col s12 m6">
             <h3>Method</h3>
-            <ul class="">
+            <ul>
                 {% for step in meal.method %}
-                <li>{{ step }}</li><br>
+                    <li>{{ step }}</li><br>
                 {% endfor %}
             </ul>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <p>Added by: {{ meal.created_by }}</p>
@@ -77,17 +81,18 @@
 
 </section>
 
+<!-- defensive design modal to provide confimation to delete -->
+
 <div id="modal1" class="modal">
     <div class="modal-content modal-header">
         <h4 class="center-align">Please confirm your choice</h4>
         <p class="center-align">Are you sure you want to delete <span>{{ meal.recipe_name }}?</span>
         </p>
         <p class="center-align">Once deleted you will not be able to get it back.</p>
-
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close btn">Cancel</a>
-        <a href="{{ url_for('delete_meal', meal_id=meal._id) }}" class="btn delete-btn">Delete</a>
+        <a href="{{ url_for('delete_meal', meal_id=meal._id) }}" class="btn delete-btn">Delete <i class="far fa-times-circle"></i></a>
     </div>
 </div>
 
