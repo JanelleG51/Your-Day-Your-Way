@@ -37,6 +37,8 @@ h1, h3, h4,
 
 .main-title {
   letter-spacing: .85vw;
+  font-size: 1.25rem;
+  margin-left: 1rem;
 }
 
 h1, h3, h5 {
@@ -46,11 +48,6 @@ h1, h3, h5 {
 h3 {
   font-size: 1.75rem;
   
-}
-
-.main-title {
-  font-size: 1.25rem;
-  margin-left: 1rem;
 }
 
 .nav-wrapper {
