@@ -4,8 +4,7 @@
 
 <div class="row back-btn">
     <div class="col s12">
-        <a href="#" onclick="takeMeBack()"><i
-                class="fas fa-arrow-left"></i> Back</a>
+        <a href="#" onclick="takeMeBack()"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 </div>
 
@@ -15,7 +14,7 @@
         <p><span>Prep time: {{ meal.prep_time }} mins</span><span>Cook time: {{ meal.cook_time }}
                 mins</span><span>Servings: {{ meal.servings }}</span></p>
     </div>
-    
+
     <div class="row">
         <div class="col s12">
             <div class="card">
@@ -36,8 +35,18 @@
         <div class="row">
             <div class="col s12 center-align">
                 {% if meal.recipe_url %}
-            <p class="orig-url-link">Original Recipe <a href="{{ meal.recipe_url }}" class="btn-small full-link-btn" target="_blank">Here</a></p>
-            {% endif %}
+                <p class="orig-url-link">Original Recipe <a href="{{ meal.recipe_url }}" class="btn-small full-link-btn"
+                        target="_blank">Here</a></p>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <div class="col">
+                <form method="POST" action="{{ url_for('rate_meal', meal_id=meal._id )}}">
+                    <label for="add_rating" class=""></label>
+                    <input type="number" class="" id="add_rating" name="add_rating">
+                    <button type="submit" class="btn-small">Rate</button>
+                </form>
             </div>
         </div>
     </div>
@@ -46,7 +55,7 @@
             <h3>Ingredients</h3>
             <ul class="">
                 {% for ingredient in meal.ingredients %}
-                    <li>{{ ingredient }}</li><br>
+                <li>{{ ingredient }}</li><br>
                 {% endfor %}
             </ul>
         </div>
@@ -54,10 +63,10 @@
             <h3>Method</h3>
             <ul class="">
                 {% for step in meal.method %}
-                    <li>{{ step }}</li><br>
+                <li>{{ step }}</li><br>
                 {% endfor %}
             </ul>
-        </div> 
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -65,7 +74,7 @@
         </div>
     </div>
 
-</section> 
+</section>
 
 <div id="modal1" class="modal">
     <div class="modal-content modal-header">
@@ -73,12 +82,11 @@
         <p class="center-align">Are you sure you want to delete <span>{{ meal.recipe_name }}?</span>
         </p>
         <p class="center-align">Once deleted you will not be able to get it back.</p>
-        
+
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close btn">Cancel</a>
-        <a href="{{ url_for('delete_meal', meal_id=meal._id) }}"
-            class="btn delete-btn">Delete</a>
+        <a href="{{ url_for('delete_meal', meal_id=meal._id) }}" class="btn delete-btn">Delete</a>
     </div>
 </div>
 

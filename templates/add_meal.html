@@ -3,7 +3,7 @@
 
 <h3 class=" center-align">Add Meal</h3>
 <section class="container">
- 
+
     <div class="row card-panel">
         <form class="col s12" method="POST" action="{{ url_for('add_meal') }}" enctype="multipart/form-data">
             <div class="row">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="input-field col s12 file-field">
                     <div class="btn-small">
-                        
+
                         <input id="image_url" name="image_url" type="file" accept="image/*" required>
                         <label for="image_url">Add photo</label>
                     </div>
@@ -62,6 +62,12 @@
                     <label for="servings">Servings</label>
                 </div>
             </div>
+            <div class="row">
+                <div class=" input-field col s12">
+                    <label for="ratings" class="">Rating</label>
+                    <input type="number" class="validate" id="ratings" name="ratings">
+                </div>
+            </div>
 
             <div class="row">
                 <div class="input-field col s12">
@@ -84,6 +90,7 @@
                     <a class="btn-small add_step">Add Step<i class=""></i></a>
                 </div>
             </div>
+            
 
             <div class="method_list">
 

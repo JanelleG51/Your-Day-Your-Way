@@ -138,6 +138,10 @@ def planner():
 @login_required
 def meals():
     meals = list(mongo.db.meals.find())
+
+    for i in range(len(meals)):
+        meals[i]['ratings'] = round(
+            sum(meals[i]['ratings']) / len(meals[i]['ratings']), 2)
     return render_template("meals.html", meals=meals)
 
 
@@ -222,6 +226,7 @@ def add_meal():
             "servings": request.form.get("servings"),
             "ingredients": ingredients_list,
             "method": method_list,
+            "ratings": [int(request.form.get('ratings'))],
             "created_by": session["user"]
         }
 
@@ -231,6 +236,18 @@ def add_meal():
 
     meal_categories = mongo.db.meal_categories.find().sort("meal_category", 1)
     return render_template("add_meal.html", meal_categories=meal_categories)
+
+
+@app.route("/rate_meal/<meal_id>", methods=["GET", "POST"])
+def rate_meal(meal_id):
+
+    if request.method == "POST":
+        meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
+        meal['ratings'].append(int(request.form.get("add_rating")))
+
+        mongo.db.meals.update_one({"_id": ObjectId(meal_id)},
+                                  {"$set": meal})
+    return redirect(url_for("meals"))
 
 
 @app.route("/add_workout", methods=["GET", "POST"])
