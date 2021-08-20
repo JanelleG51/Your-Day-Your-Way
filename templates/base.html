@@ -27,44 +27,43 @@
   <!-- materlilize mobile side navbar--> 
     <nav>
       <div class="nav-wrapper">
-        <a href="{{ url_for('planner') }}" class="main-title center">Your Day Your Way</a>
+        <a href="{{ url_for('home') }}" class="main-title center">Your Day Your Way</a>
         <a href="#" data-target="mobile-sidenav" class="sidenav-trigger right show-on-medium-and-up" aria-label="toggle navigation"><i
             class="fas fa-bars"></i></a>
         <ul class="sidenav" id="mobile-sidenav">
-          <li class="side-nav-title center-align"><a href="{{ url_for('planner') }}">Your Day Your Way</a>
+          <li class="side-nav-title center-align"><a href="{{ url_for('home') }}">Your Day Your Way</a>
           </li>
           <li><a class="sidenav-close right" href="#!"><i class="fas fa-times" aria-label="close"></i></a>
           </li>
           {% if session.user %}
-          <li></i><a href="{{ url_for('planner') }}"><i class="fas fa-calendar-week"></i>My
-              Planner</a>
-          </li>
-          <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a>
-          </li>
-          <li><a class="add-nav-link" href="{{ url_for('add_workout') }}"><i
-                class="fas fa-plus"></i>Add Workout</a>
-          </li>
-          <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a>
-          </li>
-          <li><a class="add-nav-link" href="{{ url_for('add_meal') }}"><i
-                class="fas fa-plus"></i>Add Meal</a>
-          </li>
-          <li><a href="{{ url_for('profile', username=session['user']) }}"><i
-                class="fas fa-user"></i>My Profile</a>
-          </li>
-          <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
-          </li>
-          {% else %}
-          <li></i><a href="{{ url_for('planner') }}"><i class="fas fa-calendar-week"></i>My
-            Planner</a>
-        </li>
-          <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Log In</a>
-          </li>
-          <li><a href="{{ url_for('register') }}"><i
-                class="fas fa-user-plus"></i>Register</a>
-          </li>
-          <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i></i>Contact
-              Us</a></li>
+              <li></i><a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+              </li>
+              <li><a href="{{ url_for('workouts') }}"><i class="fas fa-dumbbell"></i>Workouts</a>
+              </li>
+              <li><a class="add-nav-link" href="{{ url_for('add_workout') }}"><i
+                    class="fas fa-plus"></i>Add Workout</a>
+              </li>
+              <li><a href="{{ url_for('meals') }}"><i class="fas fa-utensils"></i>Meals</a>
+              </li>
+              <li><a class="add-nav-link" href="{{ url_for('add_meal') }}"><i
+                    class="fas fa-plus"></i>Add Meal</a>
+              </li>
+              <li><a href="{{ url_for('profile', username=session['user']) }}"><i
+                    class="fas fa-user"></i>My Profile</a>
+              </li>
+              <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+              </li>
+            {% else %}
+                <li></i><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></i>
+                  Home</a>
+              </li>
+                <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Log In</a>
+                </li>
+                <li><a href="{{ url_for('register') }}"><i
+                      class="fas fa-user-plus"></i>Register</a>
+                </li>
+                <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i></i>Contact
+                    Us</a></li>
           {% endif %}
         </ul>
       </div>
@@ -77,13 +76,13 @@
       {% if messages %}
         {% for message in messages %}
           <div class="row flashes">
-            <h4 class="center-align">{{ message }}</h4>
+            <h4 class="center-align flash-text">{{ message }}</h4>
           </div>
         {% endfor%}
       {% endif %}
     {% endwith %}
   </section>
-
+  
   <main class="container">
     {% block content %}
     {% endblock %}
@@ -100,6 +99,7 @@
         <div class="col l4 offset-l2 s12">
           <h3 class="white-text footer-heading">Useful Links</h3>
           <ul class="social-links">
+            <li><a class="grey-text text-lighten-3" href="{{ url_for('home') }}"><i class="fas fa-home" aria-hidden="true"></i> Home</a>
             <li><a class="grey-text text-lighten-3" href="{{ url_for('contact') }}"><i class="fa fa-envelope"
                   aria-hidden="true"></i> Contact Us</a></li>
           </ul>
