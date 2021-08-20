@@ -153,6 +153,10 @@ text-decoration: none;
 color: rgb(155, 34, 38),
 }
 
+.login {
+  color:blue;
+}
+
 .login:hover{
   color: rgb(187, 62, 3);
 }
