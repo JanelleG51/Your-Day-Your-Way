@@ -74,23 +74,20 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        image = request.files['profile_url']
-        image_upload = cloudinary.uploader.upload(image)
-
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "email": request.form.get("email").lower(),
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
-            "profile_url": image_upload['secure_url'],
 
         }
 
         mongo.db.users.insert_one(register)
 
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Success! Why not begin adding some content?!")
+        return redirect(url_for("meals"))
     return render_template("register.html")
 
 
