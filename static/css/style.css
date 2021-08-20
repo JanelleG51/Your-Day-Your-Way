@@ -111,9 +111,9 @@ font-weight: 700;
   
   }
 
-  .card .card-action {
-    padding: 0;
-  }
+.card .card-action {
+  padding: 0;
+}
   
 .card-content {
   margin-bottom: .50rem;
@@ -133,6 +133,11 @@ font-weight: 600;
 text-transform: uppercase;
 padding: 5px;
 margin-top: .50rem;
+}
+
+.rating-display {
+  text-transform: uppercase;
+  margin-left: .25rem;
 }
 
 
