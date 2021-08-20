@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Register{% endblock %}
 {% block content %}
 
 <h3>Register</h3>
@@ -11,7 +12,7 @@
                     <i class=""></i>
                     <input id="first_name" name="first_name" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="first_name">First Name</label>
+                    <label for="first_name"><i class="fas fa-pen"></i> First Name</label>
                 </div>
                 <div class="input-field col s6">
                     <i class=""></i>
@@ -25,7 +26,7 @@
                     <i class=""></i>
                     <input id="username" name="username" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
+                    <label for="username"><i class="fas fa-user-check"></i> Username</label>
                 </div>
             </div>
 
@@ -33,7 +34,7 @@
                 <div class="input-field col s12">
                     <i class=""></i>
                     <input id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Email</label>
+                    <label for="email"><i class="far fa-envelope"></i> Email</label>
                 </div>
             </div>
 
@@ -42,26 +43,13 @@
                     <i class=""></i>
                     <input id="password" name="password" type="password" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="input-field col s12 file-field">
-                    <div class="btn-small">
-                        <span>Profile Image</span>
-                        <input id="profile_url" name="profile_url" type="file" accept="image/*">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
-            </div>
-
 
             <div class="row">
                 <button type="submit" class="col s12 btn-small">
-                    Register <i class="fas fa-book-open right"></i>
+                    Register <i class="fas fa-user-plus right"></i>
                 </button>
             </div>
         </div>

@@ -98,6 +98,14 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class=" input-field col s12">
+                    <label for="ratings" aria-labelledby="ratings"><i class="far fa-star"></i> Rating between 1 and
+                        5</label>
+                    <input type="number" class="validate" value="{{ workout.rating }} "id="ratings" name="ratings" min="1" max="5" required>
+                </div>
+            </div>
+
             {% for step in workout.workout_steps %}
                 <div class="row">
                     <div class="input-field col s12">

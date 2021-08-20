@@ -326,6 +326,7 @@ def edit_meal(meal_id):
             "servings": request.form.get("servings"),
             "ingredients": ingredients_list,
             "method": method_list,
+            "ratings": [int(request.form.get('ratings'))],
             "created_by": session["user"]
         }
 
@@ -356,6 +357,7 @@ def edit_workout(workout_id):
             "workout_duration": request.form.get("workout_duration"),
             "sets": request.form.get("sets"),
             "workout_steps": workout_list,
+            "ratings": [int(request.form.get('ratings'))],
             "created_by": session["user"]
         }
 

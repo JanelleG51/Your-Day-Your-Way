@@ -161,6 +161,12 @@ color: rgb(155, 34, 38),
   color: white;
 }
 
+.login {
+  color: blue;
+}
+
+
+
 
 /* modal */
 .modal-header {
@@ -245,4 +251,3 @@ p > span{
   }
 
   }
-  
