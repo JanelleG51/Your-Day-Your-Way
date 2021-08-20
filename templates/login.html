@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Login{% endblock %}
 {% block content %}
 
 <h3>Log In</h3>
@@ -11,7 +12,7 @@
                     <i class=""></i>
                     <input id="username" name="username" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
+                    <label for="username"><i class="fas fa-user-plus"></i> Username</label>
                 </div>
             </div>
 
@@ -20,7 +21,7 @@
                     <i class=""></i>
                     <input id="password" name="password" type="password" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
+                    <label for="password"><i class="fas fa-lock-open"></i> Password</label>
                 </div>
             </div>
 
@@ -37,7 +38,7 @@
     <div class="col s12">
         <p class="center-align">
             New Here?
-            <a href="{{ url_for('register') }}" class="">Register Account</a>
+            <a href="{{ url_for('register') }}" class="login">Register Account</a>
         </p>
     </div>
 </div>
