@@ -307,4 +307,4 @@ The developer sought guidance from various sources but credit must go to Brian C
 
 ### Acknowledgements
 
-I'd like to acknowledge my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for 
+I'd like to acknowledge my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for providing support when it's needed.
