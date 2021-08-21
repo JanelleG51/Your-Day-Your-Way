@@ -34,6 +34,7 @@
     - [Alterations to design](#alterations-to-design)
   - [Features left to implement](#features-left-to-implement)
   - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
   - [Technologies](#technologies)
   - [Configuration](#configuration)
     - [MongoDB](#mongodb)
@@ -182,6 +183,16 @@ The developer decided to scale the project back and delayed it's functionality f
 
 ## Testing
 
+The developer [W3C HTML Validator](https://validator.w3.org/), [W3C CSS Validator](https://jigsaw.w3.org/css-validator/), [JSHint Validator](https://jshint.com/) [PEP8 Validator](http://pep8online.com/).
+
+All tests passed except the HTML valdation. The error was occurring due to the iteration of an id the developer used in a display card in a for loop. The validator was picking up every occrance the id was being iterated over. The issue was resolved by removing the id being used to override a CSS framework and using a class with !important. This is not the most ideal way but the CSS needed to be overridden and this was the only way at the current time. On resubmission the validator passed:
+ ![validator](readme_files/html-validator.png)
+
+ ### Manual Testing
+
+The result of manual testing for the site are below:
+
+![testing](readme_files/testing.png)
 
 
 ## Technologies
@@ -305,6 +316,12 @@ All images for this site were taken from the free and open source site [Unsplash
 
 The developer sought guidance from various sources but credit must go to Brian Connelly for the dynamic adding of ingredients and steps.
 
+
+[Flask Mail](https://mailtrap.io/blog/flask-email-sending/)
+
+[Login Decorator](https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/#login-required-decorator)
+
+Bug Fix [Flask Mail: Bad request – update Gmail security settings](https://support.google.com/mail/thread/5621336/bad-credentials-using-gmail-smtp?hl=en)
 ### Acknowledgements
 
 I'd like to acknowledge my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for providing support when it's needed.
