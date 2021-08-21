@@ -1,11 +1,60 @@
 # Your Day, Your Way
 
+![amiresponsive](readme_files/am-i-responsive.png)
+
+
+- [Your Day, Your Way](#your-day-your-way)
+  - [About](#about)
+  - [UX](#ux)
+    - [Strategy](#strategy)
+    - [Target Audience](#target-audience)
+    - [User Stories](#user-stories)
+    - [Site Goals](#site-goals)
+  - [Scope](#scope)
+    - [Planned features: Backend and frontend development](#planned-features-backend-and-frontend-development)
+  - [Structure](#structure)
+    - [Database Schema](#database-schema)
+  - [Validation and Security](#validation-and-security)
+    - [Backend environment:](#backend-environment)
+  - [Features](#features)
+    - [Design](#design)
+    - [Skeleton](#skeleton)
+      - [Wireframes](#wireframes)
+      - [Home](#home)
+      - [Register](#register)
+      - [Log In](#log-in)
+      - [Profile](#profile)
+      - [Meals](#meals)
+      - [Workouts](#workouts)
+      - [Contact](#contact)
+  - [Features](#features-1)
+  - [Design](#design-1)
+    - [Typography](#typography)
+  - [Imagery](#imagery)
+    - [Alterations to design](#alterations-to-design)
+  - [Features left to implement](#features-left-to-implement)
+  - [Testing](#testing)
+  - [Technologies](#technologies)
+  - [Configuration](#configuration)
+    - [MongoDB](#mongodb)
+    - [Cloudinary](#cloudinary)
+  - [Deployment to Heroku](#deployment-to-heroku)
+    - [Create application:](#create-application)
+  - [Forking](#forking)
+  - [Cloning](#cloning)
+  - [Credits](#credits)
+    - [Content](#content)
+    - [Code](#code)
+    - [Acknowledgements](#acknowledgements)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## About
-
+Your Day Your Way is intended to help user’s share healthy meals and workouts. Alongside accessing meals and workouts on the site, users can add their own favourite meals and workouts to the database and easily access them from their profile. It is a site to allow the simple and easy storage of all user workouts and meals in one easily accessible place so they can plan their meals and workouts the way they want them to be!
 ## UX
 ### Strategy 
-Your Day Your Way is intended to help user’s share healthy meals and workouts. Alongside accessing meals and workouts on the site, users can add their own favourite meals and workouts to the database and easily access them from their profile. It is a site to allow the simple and easy storage of all user workouts and meals in one easily accessible place so they can plan their meals and workouts the way they want them to be!
+
 ### Target Audience
 The target audience for this site are adults that would like to improve their health through improved diet and increased exercise. Anyone that would like to store their favourite meals and workouts in one easy place building up a reference library of their very own. This site would also benefit those that can feel overwhelmed by the variety of options available to them from multiple sources.
 ### User Stories
@@ -256,6 +305,6 @@ All images for this site were taken from the free and open source site [Unsplash
 
 The developer sought guidance from various sources but credit must go to Brian Connelly for the dynamic adding of ingredients and steps.
 
-### Acknowlegements
+### Acknowledgements
 
-I'd like to acknowlege my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for 
+I'd like to acknowledge my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for 
