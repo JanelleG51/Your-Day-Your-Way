@@ -102,15 +102,18 @@ font-weight: 600;
 
 }
 
-#small-card-font {
-line-height: .95;
-letter-spacing: .10vw;
-font-size: .78rem;
-font-weight: 700;
-
+ 
+#wo-small-card-font,
+#meal-small-card-font {
+  line-height: .95;
+  letter-spacing: .10vw;
+  font-size: .78rem;
+  font-weight: 700;
 }
 
-#title-inset {
+ 
+#meal-title-inset,
+#wo-title-inset {
   background-color: rgba(55,71,79,0.8);
   color: rgb(5, 210, 213);
   font-size: .89rem;
@@ -159,7 +162,7 @@ margin: 5px;
 
 .add-content-link {
 text-decoration: none;
-color: rgb(155, 34, 38),
+color: rgb(155, 34, 38);
 }
 
 .login {

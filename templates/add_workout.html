@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="input-field col s12 m4">
                     <select id="workout_category" name="workout_category" class="validate" required>
-                        <option disabled selected>Choose Category</option>
+                        <option value="" disabled selected>Choose Category</option>
                         {% for category in workout_categories %}
                             <option value="{{ category.workout_category }}">{{ category.workout_category }}</option>
                         {% endfor %}
@@ -20,7 +20,7 @@
                 </div>
                 <div class="input-field col s12 m4">
                     <select id="workout_level" name="workout_level" class="validate" required>
-                        <option disabled selected>Choose Level</option>
+                        <option value="" disabled selected>Choose Level</option>
                         {% for category in workout_levels %}
                             <option value="{{ category.workout_level }}">{{ category.workout_level }}</option>
                         {% endfor %}
@@ -29,7 +29,7 @@
                 </div>
                 <div class="input-field col s12 m4">
                     <select id="workout_location" name="workout_location" class="validate" required>
-                        <option disabled selected>Choose Location</option>
+                        <option value="" disabled selected>Choose Location</option>
                         {% for category in workout_locations %}
                             <option value="{{ category.workout_location }}">{{ category.workout_location }}</option>
                         {% endfor %}

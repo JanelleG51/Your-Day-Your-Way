@@ -51,10 +51,10 @@
                                 <div class="card-image">
                                     <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                                         <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
-                                        <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
+                                        <span id="meal-title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
                                 </div>
                             <div class="card-content">
-                                <span id="small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
+                                <span id="meal-small-card-font" class="card-title">{{ meal.recipe_name|upper }}</span>
                                 <p class="center-align"><span>Prep: {{ meal.prep_time|upper }} min</span>
                                     <br>
                                     <span>Cook: {{ meal.cook_time|upper }} min</span>
@@ -94,11 +94,11 @@
                             <div class="card-image">
                                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
                                     <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
-                                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+                                    <span id="wo-title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
 
                             </div>
                             <div class="card-content small-card-content">
-                                <span id="small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
+                                <span id="wo-small-card-font" class="card-title">{{ workout.workout_title|upper }}</span>
                                 <p class="center-align"><span>Time: {{ workout.workout_duration|upper }} min</span>
                                     <br><span>Where:
                                         {{ workout.workout_location }} </span>

@@ -63,7 +63,8 @@ def login_required(f):
 def home():
     """
     Grab current date and time and display on the home screen.
-    
+    Displays 3 workouts and 3 meals from the DB.
+    Only registered users can edit or delete but all can rate.
     """
     date = datetime.today().strftime('%A - %D')
     workouts = mongo.db.workouts.find().sort("_id", -1).limit(3)
@@ -74,6 +75,12 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Checks DB to see if there are any existing users or passwords.
+    If yes, user are notified they must select another.
+    On pass, user is entered in to DB and a session cookie.
+
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -101,6 +108,12 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Check the database for existing username and password.
+    Validates the two match, if yes, user is logged into site.
+    If either one is incorrect the user is notified that either
+    or are incorrect.
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -125,6 +138,11 @@ def login():
 @app.route("/meals")
 @login_required
 def meals():
+    """
+    Gets the list of all meals in the DB and render them on screen.
+    Takes index of meals and accessed the ratings field,
+    divides the ratings by number in arrays and returns the average
+    """
     meals = list(mongo.db.meals.find())
 
     for i in range(len(meals)):
@@ -135,6 +153,10 @@ def meals():
 
 @app.route("/search", methods=["GET", "POST"])
 def search_meals():
+    """
+    Accesses the defined text indexes through the search
+    and returns all results containing the search term
+    """
     query = request.form.get("query")
     meals = list(mongo.db.meals.find({"$text": {"$search": query}}))
     return render_template("meals.html", meals=meals)
@@ -143,6 +165,11 @@ def search_meals():
 @app.route("/workouts")
 @login_required
 def workouts():
+    """
+    Gets the list of all meals in the DB and render them on screen.
+    Takes index of meals and accessed the ratings field,
+    divides the ratings by number in arrays and returns the average
+    """
     workouts = list(mongo.db.workouts.find())
 
     for i in range(len(workouts)):
@@ -151,16 +178,14 @@ def workouts():
     return render_template("workouts.html", workouts=workouts)
 
 
-@app.route("/search", methods=["GET", "POST"])
-def search_workouts():
-    query = request.form.get("query")
-    workouts = list(mongo.db.workouts.find({"$text": {"$search": query}}))
-    return render_template("workouts.html", workouts=workouts)
-
-
 @app.route("/logout")
 @login_required
 def logout():
+    """
+    When requested, using the log out button,
+    the user is removed from their cookie session
+
+    """
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -169,6 +194,10 @@ def logout():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 @login_required
 def profile(username):
+    """
+    Renders the day and date to the users profile
+    along with all of their DB entries
+    """
     date = datetime.today().strftime('%A - %D')
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -182,22 +211,15 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-@app.route("/delete_user/<username>")
-@login_required
-def delete_user(username):
-
-    if session["user"] == username:
-        mongo.db.users.remove(
-            {"username": username.lower()})
-        flash("Profile Deleted")
-        session.pop("user")
-
-        return redirect(url_for("register"))
-
-
 @app.route("/add_meal", methods=["GET", "POST"])
 @login_required
 def add_meal():
+    """
+    Allows users to add all meal information as well as
+    upload their own images using Cloudinary API
+    and add ratings to all meals.
+    The instance is then inserted into the DB
+    """
     if request.method == "POST":
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
@@ -233,6 +255,12 @@ def add_meal():
 
 @app.route("/rate_meal/<meal_id>", methods=["GET", "POST"])
 def rate_meal(meal_id):
+    """
+    Once a meal has been added with the user's intial rating,
+    others are then able to rate each meal which is then
+    added to that specific objectid in the DB
+    and the rating score is updated
+    """
 
     if request.method == "POST":
         meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
@@ -246,6 +274,12 @@ def rate_meal(meal_id):
 @app.route("/add_workout", methods=["GET", "POST"])
 @login_required
 def add_workout():
+    """
+    Allows users to add all workout information as well as
+    upload their own images using Cloudinary API
+    and add ratings to all workouts.
+    The instance is then inserted into the DB
+    """
     if request.method == "POST":
         workout_steps = request.form.getlist("workout_steps")
         workout_list = []
@@ -283,6 +317,12 @@ def add_workout():
 
 @app.route("/rate_workout/<workout_id>", methods=["GET", "POST"])
 def rate_workout(workout_id):
+    """
+    Once a workout has been added with the user's intial rating,
+    others are then able to rate each workout which is then
+    added to that specific objectid in the DB
+    and the rating score is updated
+    """
 
     if request.method == "POST":
         workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
@@ -296,6 +336,10 @@ def rate_workout(workout_id):
 @app.route("/edit_meal/<meal_id>", methods=["GET", "POST"])
 @login_required
 def edit_meal(meal_id):
+    """
+    Accesses the existing entry in the DB and sends any update
+    request the user makes
+    """
     if request.method == "POST":
         ingredients = request.form.getlist("ingredients")
         ingredients_list = []
@@ -331,6 +375,10 @@ def edit_meal(meal_id):
 @app.route("/edit_workout/<workout_id>", methods=["GET", "POST"])
 @login_required
 def edit_workout(workout_id):
+    """
+    Accesses the existing entry in the DB and sends any update
+    request the user makes
+    """
     if request.method == "POST":
         workout_steps = request.form.getlist("workout_steps")
         workout_list = []
@@ -369,6 +417,10 @@ def edit_workout(workout_id):
 @app.route("/delete_meal/<meal_id>")
 @login_required
 def delete_meal(meal_id):
+    """
+    Accesses the objectid the user would like to delete
+    and on confirmation, removes the item from the DB
+    """
     mongo.db.meals.remove({"_id": ObjectId(meal_id)})
     flash("Meal Sucessfully Deleted")
     return redirect(url_for("meals"))
@@ -377,6 +429,10 @@ def delete_meal(meal_id):
 @app.route("/delete_workout/<workout_id>")
 @login_required
 def delete_workout(workout_id):
+    """
+    Accesses the objectid the user would like to delete
+    and on confirmation, removes the item from the DB
+    """
     mongo.db.workouts.remove({"_id": ObjectId(workout_id)})
     flash("Workout Sucessfully Deleted")
     return redirect(url_for("workouts"))
@@ -384,18 +440,34 @@ def delete_workout(workout_id):
 
 @app.route("/full_recipe/<meal_id>")
 def full_recipe(meal_id):
+    """
+    While display cards only show limited information 
+    the full recipe link displays all contect and 
+    associated actions for the meal
+    """
     meal = mongo.db.meals.find_one({"_id": ObjectId(meal_id)})
     return render_template("full_recipe.html", meal=meal)
 
 
 @app.route("/full_workout/<workout_id>")
 def full_workout(workout_id):
+    """
+    While display cards only show limited information, 
+    the full workout link displays all contect and 
+    associated actions for the meal
+    """
     workout = mongo.db.workouts.find_one({"_id": ObjectId(workout_id)})
     return render_template("full_workout.html", workout=workout)
 
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    """
+    When a user contacts the site using the conact form
+    an email is sent from Flak Mail to both the admin
+    and the user with the users message displayed 
+    in the body of the email 
+    """
     if request.method == "POST":
         email = request.form.get("email")
         message_field = request.form.get("message-field")
@@ -418,6 +490,12 @@ def contact():
 
         flash("Thank you for contacting us. Your message is on its way!")
     return render_template("contact.html")
+
+
+"""
+Site error handlers to ensure
+any errors are graciously dealt with 
+"""
 
 
 @app.errorhandler(404)

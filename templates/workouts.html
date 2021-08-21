@@ -29,7 +29,7 @@
             <div class="card-image">
                 <a href="{{ url_for('full_workout', workout_id=workout._id) }}">
                     <img src="{{ workout.wo_image_url }}" alt="{{ workout.workout_title }}">
-                    <span id="title-inset" class="card-title">{{ workout.workout_category|upper }}</span></a>
+                    <span class="card-title title-inset">{{ workout.workout_category|upper }}</span></a>
 
             </div>
             <div class="card-content">
@@ -56,7 +56,5 @@
     </div>
 </div>
 {% endif %}
-
-
 
 {% endblock %}

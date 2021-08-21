@@ -48,7 +48,7 @@
             <div class="card-image">
                 <a href="{{ url_for('full_recipe', meal_id=meal._id) }}">
                     <img src="{{ meal.image_url }}" alt="{{ meal.recipe_name }}">
-                    <span id="title-inset" class="card-title">{{ meal.meal_category|upper }}</span></a>
+                    <span class="card-title title-inset">{{ meal.meal_category|upper }}</span></a>
                     
             </div>
             <div class="card-content">

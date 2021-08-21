@@ -1,4 +1,5 @@
 // credit to https://github.com/Brianconn71/ms3-recipedia/blob/master/static/js/add_recipe.js
+/*jshint esversion: 6 */
 
 let ingred = 1;
 let max_ingred = 15;
