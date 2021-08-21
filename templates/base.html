@@ -54,7 +54,7 @@
 
   <!-- site wide flash message initialisation -->
 
-  <section>
+  <div>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
@@ -64,7 +64,7 @@
         {% endfor%}
       {% endif %}
     {% endwith %}
-  </section>
+        </div>
   
   <main class="container">
     {% block content %}
