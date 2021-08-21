@@ -49,9 +49,9 @@ The Visio diagram below demonstrates the information architecture and flow of th
 ### Database Schema
 MongoDB non-relational database was for this project and the structure is outlined below. The data consists of several collections forming a one-to-many relationship of key/value pairs. All of the data is text based and stored as strings or arrays. The exact composition of which can be seen in the diagram below:
 
-![database strcture](readme_files/database-structure.png)
+![database strcture](readme_files/db-structure.png)
 
-![database strcture](readme_files/dbdiagram.png)
+![database strcture](readme_files/db-objects.png)
 
 ## Validation and Security
 Validation and security measures have been put in place for:
@@ -67,7 +67,7 @@ MongoDB, Cloudinary and Flask Mail connection details are stored in an env.py fo
 
 #### Wireframes
 #### Home
-![Home]()
+![Home](readme_files/wireframes/home-page.png)
 #### Register
 ![Register](readme_files/wireframes/registration-page.png)
 #### Log In
@@ -84,12 +84,62 @@ MongoDB, Cloudinary and Flask Mail connection details are stored in an env.py fo
 #### Contact
 ![Contact](readme_files/wireframes/contact-page.png)
 
+## Features 
+- I would like to understand the sites purpose.
+  - Meet criteria by having the sites purpose clearly stated on the landing page.  
+- I would like to understand what the site offers so I can make an informed decision around whether to register or not.
+  - The site provides a full explanation on the Home page of what it offers the user without requiring them to register.
+- I want the registration process to be simple.
+  - Options to register are easily accessible on the home page, either through the call to action buttons in the body or through the side navigation bar. The user is required to enter minimal information to register to the site; name, username, email and password.
+- I would like logging in and logging out to be easy.
+  - Once registered, the logging in page can be accessed by the Home page and side navigation bar. The user is only required to provide their username and password, which is then validated. Logging out is easily accessible through the side navigation bar and requires one click.
+- I would like the sites navigation to be intuitive.
+  - The site provide full access to all areas once logged in, either from the navbar or links contained on one page to other pages on the site. For example, when on the profile page, the meals page or the workouts page, there are links provided to each other to make navigation clear and simple.
+- I expect appropriate feedback from interactive elements.
+  - The interactions with the site are adding, editing and deleting content. As well as rating or any contact the user might wish to make with the site admin. All actions are met with confirmation of the action carried out and the update that has taken place. These take the form or Flash messages and/or page redirects. 
+- I would like to upload my own images.
+  - The site provides the capacity for user’s to upload their own images using a third party API
+- I want to be able to add, edit and delete my own content.
+  - Users have the option to add two different kinds of content, meals and workouts. This can be edited and deleted at the user’s whim. 
+- I would like to access my own content from my profile page.
+  - All of the content the user uploads is automatically added to their profile and divided up into the two grouping of Meal’s and Workout’s. 
+- I would like to be able to contact the site admin.
+  - It is not a requirement for anyone to be a registered user to contact the site. The Contact Us links in the side navbar and Footer are accessible to any site visitor. Email confirmation is provided when making contact.
+- I would like to view content uploaded by everyone.
+  - As well as each users content being added to their profile, it is also available for all users to see on the Meals and Workouts pages. Although only the content owner can edit or delete their own content but all users can provide ratings.
+- I would like to add my own as well as other site users’ content to my profile.
+  - Although not available to the user at this time, it is intended to be a Feature for future release
+
+## Design
+
+The site has a simple design with few contrasting colours. It is meant to reflect an uncomplicated approach to organising your favourite meals and workouts. The colours are intended to be calming but pleasing to the eye. The colour palette is below:
+
+![Colours](readme_files/wireframes/colour-palette.png)
+
+### Typography
+The site uses Syncopate for all headings and Open Sans for the body with a fallback of Arial and san-serif. 
+
+## Imagery
+All of the imagery on the site comes from [Unsplash](https://unsplash.com/) and all are food and workout related. Images were chosen and uploaded through the site itself to be hosted on Cloudinary. The imagery on the site will be uploaded by the users.
+
+### Alterations to design
+The developer decided to scale the project back and delayed it's functionality for the time being. The biggest overall change in design was changing the landing page and replacing it with a static presentation rather the initial video.
+
+## Features left to implement
+
+- Providing user with a Planner functionality that will allow them to select their meals and workouts for the week ahead.  
+- Allow users to add meals and workouts from all users to their Planner and generate a shopping list.
+- Improving the search capability of the site  
+
+## Testing
+
+
 
 ## Technologies
-- HTML5 – used to complete the structure of the site.
-- CSS3 - used to style the presentation of the content on the site.
-- JavaScript & jQuery - were used for front-end dynamic interaction
-- Python – was incorporated as the back-end logic and the means to run/view the site. 
+- [HTML5](https://en.wikipedia.org/wiki/HTML5) – used to complete the structure of the site.
+- [CSS3](https://en.wikipedia.org/wiki/CSS) - used to style the presentation of the content on the site.
+- [JavaScript](https://www.javascript.com/) & [jQuery](https://jquery.com/) - were used for front-end dynamic interaction
+- [Python](https://www.python.org/) – was incorporated as the back-end logic and the means to run/view the site. 
 Python Modules: 
    - dnspython==2.1.0
    - Flask==2.0.1
@@ -98,20 +148,114 @@ Python Modules:
    - itsdangerous==2.0.1
    - pymongo==3.12.0
    - Werkzeug==2.0.1
-- MongoDB - used to create the non-relational document databases (collections) and data storage for this project.
-- Materialize - used through the website to assist with layout and responsiveness and incorporated JQuery functionality and form validation.
-- Cloudinary API – installed as the means to allow the users to upload their own images.
-- Flask Mail – used as the main form of email delivery for the site.
-- Google Fonts – provided the fonts for this site.
-- GitHub - is the hosting platform used to store the source code for the site.
+- [MongoDB](https://www.mongodb.com/) - used to create the non-relational document databases (collections) and data storage for this project.
+- [Materialize](https://materializecss.com/) - used through the website to assist with layout and responsiveness and incorporated JQuery functionality and form validation.
+- [Cloudinary API](https://cloudinary.com/documentation/image_upload_api_reference) – installed as the means to allow the users to upload their own images.
+- [Flask Mail](https://pythonhosted.org/Flask-Mail/) – used as the main form of email delivery for the site.
+- [Google Fonts](https://fonts.google.com/) – provided the fonts for this site.
+- [GitHub](https://github.com/join/get-started) - is the hosting platform used to store the source code for the site.
 - Git - is used as version control software to commit and push code to the GitHub repository where the source code is stored.
-- Heroku - to deploy the live website.
-- Balsamiq - was used to create wireframes for 'The Skeleton Plane' stage of UX design.
-- Font Awesome - icons displayed throughout the site are taken from Font Awesome.
-- Favicon.io was used to make the site favicon
+- [Heroku](https://id.heroku.com/login) - to deploy the live website.
+- [Balsamiq](https://balsamiq.com/) - was used to create wireframes for the design.
+- [Font Awesome](https://fontawesome.com/) - icons displayed throughout the site are taken from Font Awesome.
+
+## Configuration
+
+### MongoDB 
+- Create an account
+- Create a new shared Cluster
+- Select a Cloud provider and region relative to your area
+- Name your Cluster
+- Navigate to collections and add a database
+- In the database access section provide a username and password for your DB
+
+Connecting - via application
+- In cluster overview click the CONNECT button.
+- Select 'connect your application'
+- Select the language you are using 
+- Copy the connection string and change the details.
+- Your connection string forms part your enviroment variables:
+  
+   app.config[``"MONGO_DBNAME"``] = os.environ.get(``"MONGO_DBNAME"``)
+   
+   app.config[``"MONGO_URI"``] = os.environ.get(``"MONGO_URI"``)
+  
+   app.secret_key = os.environ.get(``"SECRET_KEY"``)
+    
 
 
+### Cloudinary
+
+- Create a Cloudinary Account and access your enviroment information from the Dashboard
+- This information must be stored in your environment variables and accessed from your app:
 
 
+    os.environ.setdefault(``CLOUDINARY_CLOUD_NAME``, ``<Your cloud name>``)
+    
+    os.environ.setdefault(``CLOUDINARY_API_KEY``, ``<Your API Key``)
+    
+    os.environ.setdefault(``CLOUDINARY_API_SECRET``,``<Your Secret Key>``)
 
 
+## Deployment to Heroku
+
+### Create application:
+
+- Login to Heroku.
+- Click on the new button.
+- Select create new app.
+- Enter the app name.
+- Select region.
+
+Set up connection to Github Repository:
+
+- Set your deployment method to 'GitHub'
+- Connect to GitHub and login
+- Search for the repository you wish to deploy from
+- Click the connect button.
+
+Set environment variables:
+
+Click the settings tab and then click the Reveal Config Vars button and add the following:
+
+- key: IP, value: 0.0.0.0
+- key: PORT, value: 5000
+- key: MONGO_DBNAME, value: (database name you want to connect to)
+- key: MONGO_URI, value: (mongo uri - This can be found in MongoDB by going to clusters > connect > connect to your application and substituting the password and dbname that you set up in the link).
+- key: SECRET_KEY, value: (This is a custom secret key set up for configuration to keep client-side sessions secure).
+
+Enable automatic deployment:
+
+- Click the Deploy tab
+- In the Automatic deploys section, choose the branch you want to deploy from then click Enable Automation Deploys.
+
+## Forking
+Forking results in a secondary branch of the site being created. The secondary branch can be worked on simultaneously without the Master Branch being altered. The steps below should be followed:
+
+1. Log into GitHub.
+2. Select your desired repository from the options to the left.
+3. From the options available at the top right of the screen, which include Watch, Star and Fork, select Fork.
+4. A forked branch of the repository is then created. This is a copy of the repository up to the point the forked branch was created.
+5. Changes can then be made in the forked repository without those changes taking effect in the Master Branch.
+6. Both repositories can be merged by selecting New Pull Request from the original repository.
+## Cloning
+1. Log into GitHub.
+2. Select your desired repository from the options to the left.
+3. From the options available just above the commit list, which include Go to File, Add File, Code and Gitpod, select Code.
+4. From the HTTPS tab, copy the URL for the repository.
+5. Once in your local IDE open a new terminal.
+6. Chose the working directory where you would like the cloned directory to be created.
+7. Type git clone into the terminal and paste the repository URL.
+8. Press enter to finish the cloning process.
+
+## Credits
+
+### Content
+All images for this site were taken from the free and open source site [Unsplash](unsplash.com). 
+### Code
+
+The developer sought guidance from various sources but credit must go to Brian Connelly for the dynamic adding of ingredients and steps.
+
+### Acknowlegements
+
+I'd like to acknowlege my mentor Victor for his patience and assistance. Claire Lemmonier for always being there with a solution to offer and the Slack community for 
