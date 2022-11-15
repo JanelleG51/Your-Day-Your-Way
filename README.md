@@ -2,7 +2,7 @@
 
 ![amiresponsive](readme_files/am-i-responsive.png)
 
-Live site can be viewed [here.](https://your-day-your-way.herokuapp.com/)
+Live site can be viewed [here.](https://your-day-your-way.onrender.com/home)
 - [Your Day, Your Way](#your-day-your-way)
   - [About](#about)
   - [UX](#ux)
